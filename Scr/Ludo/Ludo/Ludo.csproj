@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A61E70E3-46BD-4954-9E26-A192F861C44D}</ProjectGuid>
+    <ProjectGuid>{20322919-959C-42FD-9202-A77AA4557D84}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameEngine</RootNamespace>
-    <AssemblyName>GameEngine</AssemblyName>
+    <RootNamespace>Ludo</RootNamespace>
+    <AssemblyName>Ludo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -115,9 +115,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\UnitTestGameEngine\UnitTestGameEngine.csproj">
-      <Project>{becf768a-51e1-4527-8f9d-2d42ce4f8967}</Project>
-      <Name>UnitTestGameEngine</Name>
+    <ProjectReference Include="..\..\GameEngine\GameEngine.csproj">
+      <Project>{26c5bc9f-a42d-4500-8db8-652d33adc64a}</Project>
+      <Name>GameEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UnitTestLudo\UnitTestLudo.csproj">
+      <Project>{69c5393c-2041-448f-88c8-4613200aca19}</Project>
+      <Name>UnitTestLudo</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -133,9 +137,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55031</DevelopmentServerPort>
+          <DevelopmentServerPort>55286</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55031/</IISUrl>
+          <IISUrl>http://localhost:55286/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
