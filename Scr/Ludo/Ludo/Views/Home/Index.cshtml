@@ -1,7 +1,29 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="player-area">
+    @for (var y=1; y < 5; y++) //Change the limiter to the amount of players!
+    {
+        <div class="Player@y">
+            <p class="text-center">Player @y </p><!--Make this one change the name with user input-->
+            
+        </div>
+    }
+</div>
+
+<div class="bg-white" style="padding: 5px;margin-top: 10px;border-radius: 2%;">
+    <div class="game-area">
+        @for (var x = 1; x < 16; x++)
+        {
+            <div class="Row-@x">
+                @for (var i = 1; i < 16; i++)
+                {
+                    <div class="Cube-@i"></div>
+                }
+            </div>
+        }
+
+    </div>
+</div>
 

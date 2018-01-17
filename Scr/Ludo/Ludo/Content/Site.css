@@ -2,16 +2,240 @@
     background-color: #bf4523!important;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.custom-container{
+    width: 768px;
+    height: 768px;
+    margin: auto;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.game-area{
+    width: 768px;
+    height: 758px;
+    padding: 10px;
 }
 
+[class*="Cube-"]{
+    width: 49px;
+    height: 49px;
+    border: 1px solid black;
+    background-color: #943131;
+    float: left;
+}
+
+/*A little stylyng needs fixing*/
+.Row-1 [class*="Cube-"] {
+    border: none;
+}
+
+.Row-15 [class*="Cube-"] {
+    border: none;
+}
+
+.Row-2 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-2 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-3 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-3 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-4 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-4 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-5 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-5 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-6 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-6 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-7 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-7 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-8 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-8 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-9 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-9 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-10 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-10 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-11 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-11 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-12 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-12 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-13 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-13 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-14 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-14 [class="Cube-15"] {
+    border: none;
+}
+
+.Row-15 [class="Cube-1"] {
+    border: none;
+}
+
+.Row-15 [class="Cube-15"] {
+    border: none;
+}
+/*End*/
+
+
+/*Yellow House*/
+.Row-2 [class="Cube-2"] {
+    background-color: #B5BF00;
+}
+
+.Row-2 [class="Cube-5"] {
+    background-color: #B5BF00;
+}
+
+.Row-5 [class="Cube-2"] {
+    background-color: #B5BF00;
+}
+
+.Row-5 [class*="Cube-5"] {
+    background-color: #B5BF00;
+}
+
+/*Green House*/
+.Row-2 [class="Cube-11"] {
+    background-color: #007F57;
+}
+
+.Row-2 [class="Cube-14"] {
+    background-color: #007F57;
+}
+
+.Row-5 [class="Cube-11"] {
+    background-color: #007F57;
+}
+
+.Row-5 [class="Cube-14"] {
+    background-color: #007F57;
+}
+
+/*Purple House*/
+.Row-11 [class="Cube-11"] {
+    background-color: #6E3ABE;
+}
+
+.Row-11 [class="Cube-14"] {
+    background-color: #6E3ABE;
+}
+
+.Row-14 [class="Cube-11"] {
+    background-color: #6E3ABE;
+}
+
+.Row-14 [class="Cube-14"] {
+    background-color: #6E3ABE;
+}
+
+/*Orange House*/
+.Row-11 [class="Cube-2"] {
+    background-color: #FF5E00;
+}
+
+.Row-11 [class="Cube-5"] {
+    background-color: #FF5E00;
+}
+
+.Row-14 [class="Cube-2"] {
+    background-color: #FF5E00;
+}
+
+.Row-14 [class="Cube-5"] {
+    background-color: #FF5E00;
+}
+
+/*Town Center*/
+.Row-7 [class="Cube-8"] {
+    background-color: #007F57;
+}
+
+.Row-8 [class="Cube-7"] {
+    background-color: #B5BF00;
+}
+
+.Row-9 [class="Cube-8"] {
+    background-color: #FF5E00;
+}
+
+.Row-8 [class="Cube-9"] {
+    background-color: #6E3ABE;
+}
+
+
+/*Player Area*/
+.player-area{
+    width: 340px;
+    height: 735px;
+    margin: 15px 10px 10px 10px;
+    background-color: #b0b0b0;
+    float: right;
+}
