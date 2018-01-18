@@ -7,26 +7,28 @@
     {
         <div class="Player@y">
             <p class="text-center">Player @y </p><!--Make this one change the name with user input-->
-            
+
         </div>
     }
 </div>
 
 <div class="bg-white" style="padding: 5px;margin-top: 10px;border-radius: 2%;">
     <div class="game-area">
-        @for (var x = 1; x < 16; x++)
+      <div class="Green-Home"></div>
+      <div class="blue-corridor">
+        @for (var i = 1; i < 19; i++)
         {
-            <div class="Row-@x">
-                @for (var i = 1; i < 16; i++)
-                {
-                    <div class="Cube-@i"></div>
-                }
-            </div>
+            <div class="Block-@i"></div>
         }
-
+      </div>
+      <div class="Blue-Home"></div>
+      <div class="yellow-corridor"></div>
+      <div class="Red-Home"></div>
+      <div class="red-corridor"></div>
+      <div class="Yellow-Home"></div>
+      <div class="green-corridor"></div>
     </div>
 </div>
 
 <div>
 </div>
-

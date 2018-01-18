@@ -14,12 +14,33 @@
     padding: 10px;
 }
 
-[class*="Cube-"]{
+[class*="Block-"]{
     width: 49px;
     height: 49px;
     border: 1px solid black;
     background-color: #943131;
     float: left;
+}
+
+.Green-Home, .Blue-Home, .Red-Home, .Yellow-Home{
+    width: 300px;
+    height: 300px;
+}
+
+.Green-Home{
+    background-color: green;
+}
+
+.Blue-Home{
+    background-color: blue;
+}
+
+.Red-Home{
+    background-color: red;
+}
+
+.Yellow-Home{
+    background-color: yellow;
 }
 
 .CreatorPerson{
