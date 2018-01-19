@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
-{
-    public class Class1
-    {
+namespace GameEngine {
+    public class Movement {
     }
 }
