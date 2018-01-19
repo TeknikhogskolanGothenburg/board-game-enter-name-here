@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+
+namespace GameEngine.Helpers
 {
-    public class Movement
+    public static class GameHelper
     {
+        
+
     }
 }

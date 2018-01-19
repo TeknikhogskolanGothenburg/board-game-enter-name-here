@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.Helper
+namespace GameEngine.Helpers
 {
-    public static class Helper
+    public static class Settings
     {
-
-        public static readonly Dictionary<string, int> Settings = new Dictionary<string, int>()
+        public static readonly Dictionary<string, int> Ludo = new Dictionary<string, int>()
         {
             { "StartPosition", 1 },
             { "TotalBlocks", 52 },
@@ -19,10 +18,10 @@ namespace GameEngine.Helper
             { "MinNoPlayers", 2 },
             { "NoPlayerBricks", 4 },
             { "IdStartAt", 1},
+            { "DiceMaxValue", 6},
+            { "DiceMinValue", 1},
 
 
         };
-
-        
     }
 }
