@@ -1,4 +1,5 @@
-﻿@{ 
+﻿@model Ludo.Models.PlayerController
+@{ 
     ViewBag.Title = "Home Page";
 }
 
@@ -82,6 +83,7 @@
   <div class="Red-Home"></div>
 
   <div class="Middle-Circle">
-    <p>Player 1</p>
+    <p>Current player,</p>
+    <p id="PlayerName">@Model.CurrentPlayer()</p>
   </div>
 </div>

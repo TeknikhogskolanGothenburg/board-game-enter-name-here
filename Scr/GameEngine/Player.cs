@@ -10,7 +10,7 @@ namespace GameEngine
     {
 
         public int ColorId { get; set; }
-        public string Name { get; set; }
+        public string Name = "Superman";
         public string Email { get; set; }
         public List<Brick> Bricks = new List<Brick>();
         public bool IsFinished { get; set; }

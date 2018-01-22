@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GameEngine;
+using Ludo.Models;
 
 namespace Ludo.Controllers
 {
@@ -12,12 +13,12 @@ namespace Ludo.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var name = new PlayerController();
+            return View(name);
         }
 
         public ActionResult Rules()
         {
-            ViewBag.Result1 = "This is the result";
             return View();
         }
 

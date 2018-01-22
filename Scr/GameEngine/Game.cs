@@ -19,8 +19,6 @@ namespace GameEngine
 
         public Dice Dice { get; set; }
 
-
-
         public Game(NameValueCollection form)
         {
             
