@@ -9,22 +9,22 @@ namespace GameEngine
 {
     public class Dice
     {
+        private int _result;
         public int Result
         {
             get
             {
-                return RollDice();
-            }
+                return _result;
+            }            
         }
 
 
-        private int RollDice()
+        public void RollDice()
         {
-
             Random random = new Random();
-            int result = random.Next(Settings.Ludo["DiceMinValue"], Settings.Ludo["DiceMaxValue"]);
+            int value = random.Next(Settings.Ludo["DiceMinValue"], Settings.Ludo["DiceMaxValue"]);
             
-            return result;
+            _result = value;
         }
     }
 }

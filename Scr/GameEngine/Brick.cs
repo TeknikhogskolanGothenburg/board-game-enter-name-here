@@ -11,7 +11,8 @@ namespace GameEngine
         public int Id { get; set; }
         public int Position { get; set; }
         public bool IsSafe { get; set; }
-        
+        public bool CanMoveThisTurn { get; set; }
+        public int CanMoveToPosition { get; set; }
         
     }
 }

@@ -17,9 +17,13 @@ namespace GameEngine.Helpers
             { "MaxNoPlayers", 4 },
             { "MinNoPlayers", 2 },
             { "NoPlayerBricks", 4 },
-            { "IdStartAt", 1},
-            { "DiceMaxValue", 6},
-            { "DiceMinValue", 1},
+            { "IdStartAt", 1 },
+            { "DiceMaxValue", 6 },
+            { "DiceMinValue", 1 },
+            {"ColorId.Blue", 0 },
+            {"ColorId.Yellow", 1 },
+            {"ColorId.Red", 2 },
+            {"ColorId.Green", 3 },
 
 
         };
