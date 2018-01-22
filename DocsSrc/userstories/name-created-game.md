@@ -1,0 +1,1 @@
+As a user I want to be able to name my created game.
