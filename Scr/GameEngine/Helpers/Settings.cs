@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace GameEngine.Helpers
 {
     public static class Settings
+    class Settings
     {
         public static readonly Dictionary<string, int> Ludo = new Dictionary<string, int>()
         {

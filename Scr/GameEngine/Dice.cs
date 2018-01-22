@@ -15,7 +15,7 @@ namespace GameEngine
             get
             {
                 return _result;
-            }            
+            }
         }
 
 
@@ -23,7 +23,7 @@ namespace GameEngine
         {
             Random random = new Random();
             int value = random.Next(Settings.Ludo["DiceMinValue"], Settings.Ludo["DiceMaxValue"]);
-            
+
             _result = value;
         }
     }

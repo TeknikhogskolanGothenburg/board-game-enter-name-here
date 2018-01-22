@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace GameEngine.Helpers
 {
     public static class GameHelper
+    class GameHelper
     {
-        
-
     }
 }
