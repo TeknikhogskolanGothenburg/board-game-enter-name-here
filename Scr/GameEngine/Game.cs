@@ -9,6 +9,7 @@ namespace GameEngine
 {
     public class Game
     {
+
         //Main Game object, everything is controlled through this object.
 
         public int GameId { get; set; }
@@ -22,7 +23,7 @@ namespace GameEngine
 
         public Game(NameValueCollection form)
         {
-
+            
         }
 
         public void NextTurn()
@@ -43,23 +44,23 @@ namespace GameEngine
                     CurrentPlayer = Players[i + 1];
                 }
             }
-
+           
             Dice.RollDice();
         }
 
         public void AddPlayer(string name, string email, int colorId)
         {
-            var p = new Player
-            {
+            var p = new Player{
                 Name = name,
                 Email = email,
                 ColorId = colorId
             };
-
+            
             //ordna Players[] efter colorId så turordningen blir rätt.
 
             Players.Add(p);
 
         }
+
     }
 }

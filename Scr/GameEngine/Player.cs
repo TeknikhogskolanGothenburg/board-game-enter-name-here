@@ -8,6 +8,7 @@ namespace GameEngine
 {
     public class Player
     {
+
         public int ColorId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -17,6 +18,7 @@ namespace GameEngine
 
         public Player()
         {
+            
         }
 
         //public Player(string Name, string Email)

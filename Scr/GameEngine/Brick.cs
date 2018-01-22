@@ -13,5 +13,6 @@ namespace GameEngine
         public bool IsSafe { get; set; }
         public bool CanMoveThisTurn { get; set; }
         public int CanMoveToPosition { get; set; }
+        
     }
 }
