@@ -1,0 +1,10 @@
+- name: Join game or start new game
+  href: join-or-start-new.md
+- name: Name a created game
+  href: name-created-game.md
+- name: See existing games
+  href: see-existing-games.md
+- name: Choose color
+  href: choose-color.md
+- name: Create nick
+  href: create-nick.md
