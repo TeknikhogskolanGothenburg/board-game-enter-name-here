@@ -198,7 +198,7 @@
       <Name>GameEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\UnitTestLudo\UnitTestLudo.csproj">
-      <Project>{69c5393c-2041-448f-88c8-4613200aca19}</Project>
+      <Project>{69C5393C-2041-448F-88C8-4613200ACA19}</Project>
       <Name>UnitTestLudo</Name>
     </ProjectReference>
   </ItemGroup>
