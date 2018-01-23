@@ -10,6 +10,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Game-Style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,13 +22,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    @Html.ActionLink("Game", "Index", "Home", new { @class = "nav-link" })
+                    @*@Html.ActionLink("Game", "Index", "Game", new { @class = "nav-link" })*@
+                    <!--Make an if statement, that enables you to see the game IF you have joined
+                        an existing game-->
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Rules", "Rules", "Home", new { @class = "nav-link" })
+                    @Html.ActionLink("New Game", "New", "Game", new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Creators", "Creators", "Home", new { @class = "nav-link" })
+                    @Html.ActionLink("Join Game", "Join", "Game", new { @class = "nav-link" })
                 </li>
             </ul>
         </div>

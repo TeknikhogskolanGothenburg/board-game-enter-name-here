@@ -1,23 +1,90 @@
-﻿@model Ludo.Models.Game
-
+﻿@model Ludo.Models.PlayerController
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_GameLayout.cshtml";
 }
 
-  <form>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Name of the game?</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AwesomeGamenr1">
+<div class="custom-container">
+
+    <div class="Blue-Corridor">
+        <div class="Block-5"></div>
+        <div class="Block-6"></div>
+        <div class="Block-7"></div>
+        <div class="Block-4"></div>
+        <div class="Block-101"></div>
+        <div class="Block-200"></div>
+        <div class="Block-3"></div>
+        <div class="Block-102"></div>
+        <div class="Block-8"></div>
+        <div class="Block-2"></div>
+        <div class="Block-103"></div>
+        <div class="Block-9"></div>
+        <div class="Block-1"></div>
+        <div class="Block-104"></div>
+        <div class="Block-10"></div>
     </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">How many people are in your group?</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      </select>
+
+    <div class="Yellow-Corridor">
+        <div class="Block-11"></div>
+        <div class="Block-12"></div>
+        <div class="Block-13"></div>
+        <div class="Block-14"></div>
+        <div class="Block-15"></div>
+        <div class="Block-108"></div>
+        <div class="Block-107"></div>
+        <div class="Block-106"></div>
+        <div class="Block-105"></div>
+        <div class="Block-16"></div>
+        <div class="Block-20"></div>
+        <div class="Block-19"></div>
+        <div class="Block-18"></div>
+        <div class="Block-201"></div>
+        <div class="Block-17"></div>
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Confirm</button>
-  </form>
+
+    <div class="Red-Corridor">
+        <div class="Block-30"></div>
+        <div class="Block-112"></div>
+        <div class="Block-21"></div>
+        <div class="Block-29"></div>
+        <div class="Block-111"></div>
+        <div class="Block-22"></div>
+        <div class="Block-28"></div>
+        <div class="Block-110"></div>
+        <div class="Block-23"></div>
+        <div class="Block-202"></div>
+        <div class="Block-109"></div>
+        <div class="Block-24"></div>
+        <div class="Block-27"></div>
+        <div class="Block-26"></div>
+        <div class="Block-25"></div>
+    </div>
+
+    <div class="Green-Corridor">
+        <div class="Block-37"></div>
+        <div class="Block-203"></div>
+        <div class="Block-38"></div>
+        <div class="Block-39"></div>
+        <div class="Block-40"></div>
+        <div class="Block-36"></div>
+        <div class="Block-113"></div>
+        <div class="Block-114"></div>
+        <div class="Block-115"></div>
+        <div class="Block-116"></div>
+        <div class="Block-35"></div>
+        <div class="Block-34"></div>
+        <div class="Block-33"></div>
+        <div class="Block-32"></div>
+        <div class="Block-31"></div>
+    </div>
+
+    <div class="Green-Home"></div>
+    <div class="Blue-Home"></div>
+    <div class="Yellow-Home"></div>
+    <div class="Red-Home"></div>
+
+    <div class="Middle-Circle">
+        <p>Current player,</p>
+        <p id="PlayerName">@Model.CurrentPlayer()</p>
+    </div>
+</div>

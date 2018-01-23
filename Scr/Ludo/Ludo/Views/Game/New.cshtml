@@ -2,7 +2,78 @@
 
 @{
     ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_GameLayout.cshtml";
 }
 
-<h2>New</h2>
+<h2>Create a new game!</h2>
 
+@using (Html.BeginForm())
+{
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Name of the game?</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AwesomeGamenr1">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">How many people are in your group?</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+    </form>
+}
+<br />
+<br />
+<br />
+<!--Second Part of the forum-->
+@{var numOfPlayer = 2;}
+@using (Html.BeginForm())
+{
+    <form>
+        @if (numOfPlayer == 1)
+        {
+            numOfPlayer = 2;
+            for (var i = 1; i < numOfPlayer; i++)
+            {
+                <div class="form-group">
+                    <label for="playerName-@i">Name of Player @i</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Player @i">
+                </div>
+                <div class="form-group">
+                    <label for="player-@i">What color is this player choosing?</label>
+                    <select class="form-control" id="colorForPlayer-@i">
+                        <option>Blue</option>
+                        <option>Yellow</option>
+                        <option>Red</option>
+                        <option>Green</option>
+                    </select>
+                </div>
+            }
+        }
+        else
+        {
+            numOfPlayer++;
+            for (var i = 1; i < numOfPlayer; i++)
+            {
+                <div class="form-group">
+                    <label for="playerName-@i">Name of Player @i</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Player @i">
+                </div>
+                <div class="form-group">
+                    <label for="player-@i">What color is this player choosing?</label>
+                    <select class="form-control" id="colorForPlayer-@i">
+                        <option>Blue</option>
+                        <option>Yellow</option>
+                        <option>Red</option>
+                        <option>Green</option>
+                    </select>
+                </div>
+            }
+        }
+        <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+    </form>
+}
