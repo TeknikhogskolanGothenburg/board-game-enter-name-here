@@ -154,11 +154,14 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\PlayerController.cs" />
+    <Compile Include="Models\ViewModels\GameListing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +184,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Rules.cshtml" />
     <Content Include="Views\Home\Creators.cshtml" />
+    <Content Include="Views\Game\Join.cshtml" />
+    <Content Include="Views\Game\New.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
