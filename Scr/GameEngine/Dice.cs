@@ -22,7 +22,7 @@ namespace GameEngine
         public void RollDice()
         {
             Random random = new Random();
-            int value = random.Next(Settings.Ludo["DiceMinValue"], Settings.Ludo["DiceMaxValue"]);
+            int value = random.Next(Settings.DiceMinValue, Settings.DiceMaxValue);
             
             _result = value;
         }

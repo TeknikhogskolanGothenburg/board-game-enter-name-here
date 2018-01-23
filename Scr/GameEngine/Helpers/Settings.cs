@@ -8,24 +8,35 @@ namespace GameEngine.Helpers
 {
     public static class Settings
     {
-        public static readonly Dictionary<string, int> Ludo = new Dictionary<string, int>()
-        {
-            { "StartPosition", 1 },
-            { "TotalBlocks", 52 },
-            { "NoSections", 4 },
-            { "NoSectionBlocks", 13},
-            { "MaxNoPlayers", 4 },
-            { "MinNoPlayers", 2 },
-            { "NoPlayerBricks", 4 },
-            { "IdStartAt", 1 },
-            { "DiceMaxValue", 6 },
-            { "DiceMinValue", 1 },
-            {"ColorId.Blue", 0 },
-            {"ColorId.Yellow", 1 },
-            {"ColorId.Red", 2 },
-            {"ColorId.Green", 3 },
+
+        public static readonly int MinPosition = 1;
+        public static readonly int MaxPosition = 52;
+        public static readonly int NoBlocksFinalRow = 5;
+        public static readonly int NoSections = 4;
+        public static readonly int NoSectionBlocks = 13;
+        public static readonly int MaxNoPlayers = 4;
+        public static readonly int MinNoPlayers = 2;
+        public static readonly int NoPlayerBricks = 4;
+        public static readonly int GameMinId = 1;
+        public static readonly int DiceMaxValue = 6;
+        public static readonly int DiceMinValue = 1;
+
+        public static readonly Dictionary<string, int> ColorId = new Dictionary<string, int>()
+            {
+                {"Blue", 0 },
+                {"Yellow", 1 },
+                {"Red", 2 },
+                {"Green", 3 }
+            };
+        public static readonly Dictionary<int, int> ColorHomePosition = new Dictionary<int, int>()
+            {
+                {0, 1000 },
+                {1, 2000 },
+                {2, 3000 },
+                {3, 4000 }
+            };
 
 
-        };
+
     }
 }

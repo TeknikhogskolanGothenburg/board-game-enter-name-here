@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameEngine.Helpers;
 
 namespace GameEngine
 {
@@ -21,8 +22,40 @@ namespace GameEngine
 
         public Game(NameValueCollection form)
         {
-            
+            GameId = GameHelper.GetNextGameId();
+            Name = form["game-name"];
+            GameHelper.AllGames.Add(this);
         }
+
+
+        
+
+        public bool JoinExistingGame(NameValueCollection form)
+        {
+            var name = form["name"];
+            var email = form["email"];
+            int colorId = 0;
+
+
+            if (int.TryParse(form["colorId"], out int id))
+            {
+                colorId = id;
+                try
+                {
+                    AddPlayer(name, email, colorId);
+                }
+                catch (Exception)
+                {
+                    //Ignore
+                    Console.Write("Player could not be added.");
+                }
+                return true;
+                
+            }
+            return false;
+        }
+
+       
 
         public void NextTurn()
         {
@@ -42,23 +75,31 @@ namespace GameEngine
                     CurrentPlayer = Players[i + 1];
                 }
             }
-           
+
             Dice.RollDice();
         }
 
+
+
         public void AddPlayer(string name, string email, int colorId)
         {
-            var p = new Player{
+            var p = new Player
+            {
                 Name = name,
                 Email = email,
                 ColorId = colorId
             };
-            
+
             //ordna Players[] efter colorId så turordningen blir rätt.
 
             Players.Add(p);
 
         }
 
+
+        public void EndGame()
+        {
+            GameHelper.AllGames.Remove(this);
+        }
     }
 }
