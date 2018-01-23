@@ -16,7 +16,8 @@ namespace GameEngine.Helpers
             if (AllGames.Count() == 0)
             {
                 return Settings.GameMinId;
-            } else
+            }
+            else
             {
                 var newId = AllGames.Count() + 1;
                 return newId;

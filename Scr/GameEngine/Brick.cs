@@ -9,6 +9,10 @@ namespace GameEngine
 {
     public class Brick
     {
+
+        // Need to remove set; from properties and instead use generators to set values.
+
+
         public int Id { get; set; }
         public int ColorId { get; set; }
         public int Position { get; set; }
