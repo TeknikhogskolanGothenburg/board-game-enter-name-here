@@ -5,5 +5,19 @@
     Layout = "~/Views/Shared/_GameLayout.cshtml";
 }
 
-<h2>Index</h2>
-
+  <form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Name of the game?</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AwesomeGamenr1">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">How many people are in your group?</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+  </form>
