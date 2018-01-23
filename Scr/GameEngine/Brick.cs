@@ -10,17 +10,54 @@ namespace GameEngine
     public class Brick
     {
         public int Id { get; set; }
+        public int ColorId { get; set; }
         public int Position { get; set; }
-        public bool IsSafe { get; set; }
-        public bool CanMoveThisTurn { get; set; }
-        public int CanMoveToPosition { get; set; }
-        
-        //public int _CanMoveToPosition(int diceResult)
-        //{
-        //    if ( Position + diceResult > Settings.Ludo["TotalBlocks"])
-        //    {
+        public bool IsSafe { get; set; } = false;
+        public bool CanMove { get; set; } = false;
+        public int PossibleNewPosition { get; set; }
 
-        //    }
-        //}
+        public void CanMoveToPosition(int diceResult)
+        {
+            var newPos = Position + diceResult;
+            var totalBlocks = Settings.MaxPosition;
+            var totalBlocksIncFinal = Settings.MaxPosition + Settings.NoBlocksFinalRow;
+
+            if (newPos < totalBlocks)
+            {
+                CanMove = true;
+                PossibleNewPosition = newPos;                
+            }
+            else
+            {
+                if (newPos < totalBlocksIncFinal)
+                {
+                    //Set position in final row. Need IDs
+                    //PossibleNewPosition = ??
+                }
+                else
+                {
+                    CanMove = false;
+                }
+                
+            }
+        }
+
+        public void Capture(Brick brick)
+        {
+            if(!brick.IsSafe)
+            {
+                brick.Position = Settings.ColorHomePosition[brick.ColorId];
+                brick.IsSafe = true;
+            }
+            
+        }
+
+        public bool MoveToNewPosition(Brick brick)
+        {
+            Position = PossibleNewPosition;
+
+            return true;
+        }
+
     }
 }

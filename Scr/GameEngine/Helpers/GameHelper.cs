@@ -9,7 +9,18 @@ namespace GameEngine.Helpers
 {
     public static class GameHelper
     {
-        
+        public static List<Game> AllGames = new List<Game>();
 
+        public static int GetNextGameId()
+        {
+            if (AllGames.Count() == 0)
+            {
+                return Settings.GameMinId;
+            } else
+            {
+                var newId = AllGames.Count() + 1;
+                return newId;
+            }
+        }
     }
 }
