@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameEngine.Helpers;
 
 namespace GameEngine
 {
@@ -14,5 +15,12 @@ namespace GameEngine
         public bool CanMoveThisTurn { get; set; }
         public int CanMoveToPosition { get; set; }
         
+        //public int _CanMoveToPosition(int diceResult)
+        //{
+        //    if ( Position + diceResult > Settings.Ludo["TotalBlocks"])
+        //    {
+
+        //    }
+        //}
     }
 }

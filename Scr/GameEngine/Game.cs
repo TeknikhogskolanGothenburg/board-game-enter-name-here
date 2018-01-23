@@ -24,6 +24,7 @@ namespace GameEngine
         public Game(NameValueCollection form)
         {
             
+
         }
 
         public void NextTurn()
