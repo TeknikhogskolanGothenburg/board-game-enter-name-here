@@ -1,13 +1,15 @@
-﻿@model Ludo.Models.ViewModels.GameListing
+﻿@model Ludo.Models.ViewModels.JoinGameViewModel
 
 @{
     ViewBag.Title = "Join";
 }
 
-  <form>
+@using (Html.BeginForm("Join", "Game", FormMethod.Post))
+{
     <div class="form-group">
-      <label for="exampleFormControlInput1">ID of the game?</label>
-      <input type="text" class="form-control" id="IDOfTheGame" placeholder="#345678">
+        <label for="gameId">Enter Game Id</label>
+        <input type="text" class="form-control" name="gameId" id="gameId" placeholder="#345678">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Confirm</button>
-  </form>
+    <input type="submit" class="btn btn-success mb-2" value="Join" />
+}
+

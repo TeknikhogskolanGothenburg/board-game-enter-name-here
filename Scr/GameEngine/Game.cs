@@ -18,17 +18,19 @@ namespace GameEngine
         public List<Player> Players = new List<Player>();
         public Player CurrentPlayer { get; set; }
 
+        public int NoPlayers;
+
         public Dice Dice { get; set; }
 
         public Game(NameValueCollection form)
         {
             GameId = GameHelper.GetNextGameId();
-            Name = form["game-name"];
+            Name = form["name"];
             GameHelper.AllGames.Add(this);
         }
 
 
-        
+
 
         public bool JoinExistingGame(NameValueCollection form)
         {
@@ -50,12 +52,12 @@ namespace GameEngine
                     Console.Write("Player could not be added.");
                 }
                 return true;
-                
+
             }
             return false;
         }
 
-       
+
 
         public void NextTurn()
         {
@@ -83,16 +85,19 @@ namespace GameEngine
 
         public void AddPlayer(string name, string email, int colorId)
         {
-            var p = new Player
+            if (Players.Count() < NoPlayers)
             {
-                Name = name,
-                Email = email,
-                ColorId = colorId
-            };
-
+                var p = new Player
+                {
+                    Name = name,
+                    Email = email,
+                    ColorId = colorId
+                };
+                Players.Add(p);
+            }
             //ordna Players[] efter colorId så turordningen blir rätt.
 
-            Players.Add(p);
+
 
         }
 

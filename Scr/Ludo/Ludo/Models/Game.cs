@@ -7,6 +7,8 @@ namespace Ludo.Models
 {
     public class Game
     {
-        // data för att skapa & spela ett Game, typ Game-objektet från GameEngine
+       public GameEngine.Game Instance { get; set; }
+        public string noPlayers;
+        public string name;
     }
 }
