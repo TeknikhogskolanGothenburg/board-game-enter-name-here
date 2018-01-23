@@ -28,15 +28,15 @@ public class BundleConfig
                     "~/Scripts/respond.js"));
 
         bundles.Add(new StyleBundle("~/Content/css").Include(
-            "~/Content/bootstrap.css",
-            "~/Content/site.css"));
+                    "~/Content/bootstrap.css",
+                    "~/Content/site.css"));
 
         bundles.Add(new ScriptBundle("~/Scrpts/Bootstrap").Include(
                              /*** Make sure popper.js is pointing to umd ***/
-                             "~/Scripts/umd/popper.js",
-                             "~/Scripts/bootstrap.js"));
+                    "~/Scripts/umd/popper.js",
+                    "~/Scripts/bootstrap.js"));
 
         bundles.Add(new StyleBundle("~/CSS/Bootstrap").Include(
-                            "~/Content/bootstrap.css"));
+                    "~/Content/bootstrap.css"));
     }
 }

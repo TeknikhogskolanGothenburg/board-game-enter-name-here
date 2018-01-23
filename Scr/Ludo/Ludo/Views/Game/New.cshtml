@@ -1,11 +1,49 @@
-﻿@model Ludo.Models.Game
+﻿@model Ludo.Models.ViewModels.NewGameViewModel
 
 @{
+<<<<<<< HEAD
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_GameLayout.cshtml";
 }
 
 <h2>Create a new game!</h2>
+=======
+    ViewBag.Title = "New Game";
+}
+
+
+@using (Html.BeginForm("New", "Game", FormMethod.Post))
+{
+    <div class="container">
+        <div class="col-sm">
+            <div class="form-group">
+                
+                <label class="text-white" for="name">Name of the game?</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="AwesomeGamenr1">
+            </div>
+            <div class="form-group">
+                
+                <label class="text-white" for="noPlayers">Number of players</label>
+                <select class="form-control" id="noPlayers" name="noPlayers">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+                
+            <input type="submit" class="btn btn-success mb-2" value="Create" />
+            <!-- <button type="submit" class="btn btn-success mb-2">Create</button -->
+        </div>
+        <div class="col-sm"> </div>
+        <div class="col-sm"> hej</div>
+    </div>
+
+}
+
+
+
+>>>>>>> d7c692adc2f823ebb1d0cd6722dfd0156789d65a
 
 @using (Html.BeginForm())
 {

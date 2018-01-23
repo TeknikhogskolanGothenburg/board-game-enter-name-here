@@ -160,9 +160,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GameHelper.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\PlayerController.cs" />
-    <Compile Include="Models\ViewModels\GameListing.cs" />
+    <Compile Include="Models\ViewModels\AllViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,7 @@
     <Content Include="Views\Game\Join.cshtml" />
     <Content Include="Views\Game\New.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\Game.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
