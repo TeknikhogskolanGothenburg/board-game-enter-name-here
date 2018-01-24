@@ -5,11 +5,10 @@
 }
 
 <br />
-<h2>Adding Players</h2>
+<h2>Adding Players to</h2>
 <h2>@ViewBag.GameName</h2>
-<h2>@ViewBag.PlayerCount</h2>
 
-@{var numOfPlayer = 1;}
+@{var numOfPlayer = Convert.ToInt16(ViewBag.PlayerCount);}
 @using (Html.BeginForm("New", "Game", FormMethod.Post))
 {
     <form>
