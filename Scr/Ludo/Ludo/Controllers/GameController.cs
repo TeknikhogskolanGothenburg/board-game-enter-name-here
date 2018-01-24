@@ -38,20 +38,30 @@ namespace Ludo.Controllers
             return View(id);
         }
 
-        [HttpGet]
-        public ActionResult New()
+        //[HttpGet]
+        public ActionResult New(string name, string count)
         {
+            ViewBag.GameName = name;
+            ViewBag.PlayerCount = count;
             var model = new NewGameViewModel();
             return View("New", model);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult New(FormCollection form)
         {
             // Create new GameEngine.Game() with the form-data
             // change return view to game view with Id
 
-            return View("Index");
+            return View();
+        }*/
+
+        //[HttpPost]
+        public ActionResult AddingPlayers(string name, string count)
+        {
+            ViewBag.GameName = name;
+            ViewBag.PlayerCount = count;
+            return View();
         }
     }
 }

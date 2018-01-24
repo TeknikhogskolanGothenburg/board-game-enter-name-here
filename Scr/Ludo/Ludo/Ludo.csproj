@@ -189,6 +189,7 @@
     <Content Include="Views\Game\Join.cshtml" />
     <Content Include="Views\Game\New.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\AddingPlayers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
