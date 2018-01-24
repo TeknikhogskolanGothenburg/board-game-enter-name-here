@@ -38,13 +38,17 @@ namespace Ludo.Controllers
             return View(id);
         }
 
-        //[HttpGet]
-        public ActionResult New(string name, string count)
+        public ActionResult New()
         {
-            ViewBag.GameName = name;
-            ViewBag.PlayerCount = count;
             var model = new NewGameViewModel();
             return View("New", model);
+        }
+
+        [HttpPost]
+        public ActionResult New(FormCollection form)
+        {
+            var model = new NewGameViewModel();
+            return View();
         }
 
         /*[HttpPost]
@@ -56,11 +60,11 @@ namespace Ludo.Controllers
             return View();
         }*/
 
-        //[HttpPost]
+        [HttpGet]
         public ActionResult AddingPlayers(string name, string count)
         {
-            ViewBag.GameName = name;
-            ViewBag.PlayerCount = count;
+            ViewBag.GameName = Request.QueryString["GameName"];
+            ViewBag.PlayerCount = Request.QueryString["NumberOfPlayers"];
             return View();
         }
     }
