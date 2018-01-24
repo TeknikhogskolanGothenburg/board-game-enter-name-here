@@ -9,7 +9,7 @@ namespace GameEngine.Helpers
 {
     public static class GameHelper
     {
-        public static List<Game> AllGames = new List<Game>();
+        public static Dictionary<int,Game> AllGames = new Dictionary<int, Game>();
 
         public static int GetNextGameId()
         {

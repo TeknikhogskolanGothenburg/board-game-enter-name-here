@@ -159,7 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\GameHelper.cs" />
+    <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\PlayerController.cs" />
     <Compile Include="Models\ViewModels\AllViewModels.cs" />

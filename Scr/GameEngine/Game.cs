@@ -20,28 +20,33 @@ namespace GameEngine
 
         public int NoPlayers;
 
-        public Dice Dice { get; set; }
-
-        public Game(NameValueCollection form)
+        public List<int> TakenColorIds
         {
-            GameId = GameHelper.GetNextGameId();
-            Name = form["name"];
-            GameHelper.AllGames.Add(this);
+            get
+            {
+                return GetTakenColorIds();
+            }
         }
 
+        public Dice Dice { get; set; }
+
+        //public Game(NameValueCollection form)
+        //{
+        //    GameId = GameHelper.GetNextGameId();
+        //    Name = form["name"];
+        //    GameHelper.AllGames.Add(this);
+        //}
 
 
 
-        public bool JoinExistingGame(NameValueCollection form)
+
+        public bool JoinExistingGame(string name, string email, int colorId)
         {
-            var name = form["name"];
-            var email = form["email"];
-            int colorId = 0;
+           
 
-
-            if (int.TryParse(form["colorId"], out int id))
+            if (!this.GetTakenColorIds().Contains(colorId))
             {
-                colorId = id;
+                
                 try
                 {
                     AddPlayer(name, email, colorId);
@@ -55,6 +60,11 @@ namespace GameEngine
 
             }
             return false;
+        }
+
+        public void LeaveGame(int playerId)
+        {
+            //maybe send obj Player instead of Id
         }
 
 
@@ -96,15 +106,41 @@ namespace GameEngine
                 Players.Add(p);
             }
             //ordna Players[] efter colorId så turordningen blir rätt.
-
-
-
         }
+
+
+        private List<int> GetTakenColorIds()
+        {
+            var takenIds = new List<int>();
+
+            foreach (var p in Players)
+            {
+                takenIds.Add(p.ColorId);
+            }
+
+            return takenIds;
+        }
+
+        //public List<int> GetAvailableColorIds()
+        //{
+        //    var availableIds = new List<int>(Settings.ColorId.Keys);
+        //    var takenIds = new List<int>();
+
+        //    foreach (var p in Players)
+        //    {
+        //        takenIds.Add(p.ColorId);
+        //    }
+
+        //    availableIds = availableIds.Except(takenIds).ToList();
+
+        //    return availableIds;
+
+        //}
 
 
         public void EndGame()
         {
-            GameHelper.AllGames.Remove(this);
+            GameHelper.AllGames.Remove(this.GameId);
         }
     }
 }

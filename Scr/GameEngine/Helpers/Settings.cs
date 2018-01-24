@@ -17,16 +17,16 @@ namespace GameEngine.Helpers
         public static readonly int MaxNoPlayers = 4;
         public static readonly int MinNoPlayers = 2;
         public static readonly int NoPlayerBricks = 4;
-        public static readonly int GameMinId = 1;
+        public static readonly int GameMinId = 100;
         public static readonly int DiceMaxValue = 6;
         public static readonly int DiceMinValue = 1;
 
-        public static readonly Dictionary<string, int> ColorId = new Dictionary<string, int>()
+        public static readonly Dictionary<int,string> ColorId = new Dictionary<int,string>()
             {
-                {"Blue", 0 },
-                {"Yellow", 1 },
-                {"Red", 2 },
-                {"Green", 3 }
+                {0,"Blue"},
+                {1,"Yellow"},
+                {2,"Red"},
+                {3,"Green"}
             };
         public static readonly Dictionary<int, int> ColorHomePosition = new Dictionary<int, int>()
             {
