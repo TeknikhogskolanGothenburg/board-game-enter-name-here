@@ -12,6 +12,14 @@ namespace GameEngine.Helpers
         public static Dictionary<int, Game> AllGames = new Dictionary<int, Game>();
 
 
+        public static bool GameExists(int gameId)
+        {
+            if(AllGames.ContainsKey(gameId))
+            {
+                return true;
+            }
+            return false;
+        }
 
         public static int GetNextGameId()
         {

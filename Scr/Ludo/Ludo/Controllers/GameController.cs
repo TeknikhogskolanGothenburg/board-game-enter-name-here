@@ -19,18 +19,35 @@ namespace Ludo.Controllers
         }
 
 
-        public ActionResult Game(string gameId)
+        public ActionResult Game(int id)
         {
-            var id = int.Parse(gameId);
+            var model = new GameModel
+            {
+                GameId = id,
+                Game = GameHelper.AllGames[id]
+            };
+            try
+            {
+                if (GameHelper.GameExists(id))
+                {
 
-            return View("Game");
+                }
+            }
+            catch(Exception)
+            {
+                throw new HttpException(404, "Page not found");
+            }
+            
+            
+
+            return View("Game", model);
         }
 
 
         [HttpGet]
         public ActionResult Join()
         {
-            var model = new JoinGameListViewModel
+            var model = new JoinGameViewModel
             {
                 Games = GameHelper.GetAllOpenGames()
             };
@@ -57,8 +74,17 @@ namespace Ludo.Controllers
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Id", colorId.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Name", name);
+            //model.Games = GameHelper.GetAllOpenGames();
 
-            return Redirect("/game/" + gameId);
+            var gameModel = new GameModel
+            {
+                GameId = gameId,
+                Game = game
+            };
+
+
+            return RedirectToRoute("Game", new { id = game.GameId });
+            //return View("Game",gameModel);
         }
 
 
@@ -66,6 +92,7 @@ namespace Ludo.Controllers
         public ActionResult New()
         {
             var model = new NewGameViewModel();
+
             return View("New", model);
         }
 
@@ -94,11 +121,12 @@ namespace Ludo.Controllers
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());
 
-            return Redirect("/game/" + game.GameId);
+            //return View("New", model);
+            return RedirectToRoute("Game", new { id = game.GameId.ToString() });
         }
 
 
-        
+
 
     }
 }
