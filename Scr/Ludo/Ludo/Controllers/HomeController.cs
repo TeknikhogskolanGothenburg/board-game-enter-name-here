@@ -13,8 +13,7 @@ namespace Ludo.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var name = new PlayerController();
-            return View(name);
+            return View();
         }
 
         public ActionResult Rules()
