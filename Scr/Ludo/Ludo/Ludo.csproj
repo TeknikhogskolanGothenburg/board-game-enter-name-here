@@ -162,7 +162,6 @@
     </Compile>
     <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Models\GameModel.cs" />
-    <Compile Include="Models\PlayerController.cs" />
     <Compile Include="Models\ViewModels\AllViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -189,7 +188,6 @@
     <Content Include="Views\Game\Join.cshtml" />
     <Content Include="Views\Game\New.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
-    <Content Include="Views\Game\AddingPlayers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

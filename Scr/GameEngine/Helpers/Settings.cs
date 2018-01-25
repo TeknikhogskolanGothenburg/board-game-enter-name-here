@@ -23,10 +23,10 @@ namespace GameEngine.Helpers
 
         public static readonly Dictionary<int,string> ColorId = new Dictionary<int,string>()
             {
-                {0,"Blue"},
-                {1,"Yellow"},
-                {2,"Red"},
-                {3,"Green"}
+                {0,"blue"},
+                {1,"yellow"},
+                {2,"red"},
+                {3,"green"}
             };
         public static readonly Dictionary<int, int> ColorHomePosition = new Dictionary<int, int>()
             {
