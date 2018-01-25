@@ -9,7 +9,9 @@ namespace GameEngine.Helpers
 {
     public static class GameHelper
     {
-        public static List<Game> AllGames = new List<Game>();
+        public static Dictionary<int, Game> AllGames = new Dictionary<int, Game>();
+
+
 
         public static int GetNextGameId()
         {
@@ -22,6 +24,22 @@ namespace GameEngine.Helpers
                 var newId = AllGames.Count() + 1;
                 return newId;
             }
+        }
+
+        public static Dictionary<int, Game> GetAllOpenGames()
+        {
+            var list = new Dictionary<int, Game>();
+
+            foreach (int key in AllGames.Keys)
+            {
+                var game = AllGames[key];
+                if (game.NoPlayers > game.Players.Count())
+                {
+                    list.Add(key, game);
+                }
+            }
+
+            return list;
         }
     }
 }
