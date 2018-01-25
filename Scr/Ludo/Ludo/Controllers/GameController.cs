@@ -48,9 +48,9 @@ namespace Ludo.Controllers
 
             var name = model.PlayerName;
             var email = model.PlayerEmail;
-            var colorId = model.PlayerColorId;
+            var color = model.PlayerColor;
 
-
+            var colorId = GameHelper.GetColorId(color);
             game.AddPlayer(name, email, colorId);
 
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
@@ -83,7 +83,10 @@ namespace Ludo.Controllers
             };
 
             // Add player 1
-            game.AddPlayer(model.PlayerName, model.PlayerEmail, model.PlayerColorId);
+            var color = model.PlayerColor;
+
+            var colorId = GameHelper.GetColorId(color);
+            game.AddPlayer(model.PlayerName, model.PlayerEmail, colorId);
 
             GameHelper.AllGames.Add(game.GameId, game);
 

@@ -26,6 +26,18 @@ namespace GameEngine.Helpers
             }
         }
 
+        public static int GetColorId(string color)
+        {
+            int colorId;
+            color = color.ToLower();
+            if(Settings.ColorId.Values.Contains(color))
+            {
+                colorId = Settings.ColorId.FirstOrDefault(x => x.Value == color).Key;
+                return colorId;
+            }
+            return -1;
+        }
+
         public static Dictionary<int, Game> GetAllOpenGames()
         {
             var list = new Dictionary<int, Game>();

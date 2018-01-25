@@ -11,7 +11,7 @@ namespace Ludo.Models.ViewModels
         public int NoPlayers { get; set; }
         public string PlayerName { get; set; }
         public string PlayerEmail { get; set; }
-        public int PlayerColorId { get; set; }
+        public string PlayerColor { get; set; }
     }
 
     public class JoinGameListViewModel
@@ -21,10 +21,11 @@ namespace Ludo.Models.ViewModels
 
     public class JoinGameViewModel
     {
+        public Dictionary<int, GameEngine.Game> Games = new Dictionary<int, GameEngine.Game>();
         public int GameId { get; set; }
         public GameEngine.Game Game { get; set; }
         public string PlayerName { get; set; }
         public string PlayerEmail { get; set; }
-        public int PlayerColorId { get; set; }
+        public string PlayerColor { get; set; }
     }
 }

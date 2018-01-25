@@ -1,6 +1,6 @@
-﻿@model Ludo.Models.PlayerController
+﻿@model Ludo.Models.GameModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "@Model.Game.Name";
     Layout = "~/Views/Shared/_GameLayout.cshtml";
 }
 
@@ -84,7 +84,7 @@
     <div class="Red-Home"></div>
 
     <div class="Middle-Circle">
-        <p>Current player,</p>
-        <p id="PlayerName"></p>
+        <p>Current player:</p>
+        <p id="PlayerName">@Model.Game.CurrentPlayer.Name</p>
     </div>
 </div>
