@@ -30,20 +30,26 @@ namespace Ludo.Controllers
         [HttpGet]
         public ActionResult Join()
         {
-            return View();
+            var model = new JoinGameListViewModel
+            {
+                Games = GameHelper.GetAllOpenGames()
+            };
+
+            return View("Join", model);
         }
 
 
         [HttpPost]
-        public ActionResult Join(FormCollection form)
+        public ActionResult Join(JoinGameViewModel model)
         {
 
-            var id = int.Parse(form["gameId"]);
-            var game = GameHelper.AllGames[id];
+            var gameId = model.GameId;
+            var game = GameHelper.AllGames[gameId];
 
-            var name = form["player_name"];
-            var email = form["player_email"];
-            var colorId = int.Parse(form["color_id"]);
+            var name = model.PlayerName;
+            var email = model.PlayerEmail;
+            var colorId = model.PlayerColorId;
+
 
             game.AddPlayer(name, email, colorId);
 
@@ -52,7 +58,7 @@ namespace Ludo.Controllers
             CookieHelper.SetArrayCookieValue("Player", "Id", colorId.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Name", name);
 
-            return Redirect("/game/" + id);
+            return Redirect("/game/" + gameId);
         }
 
 
@@ -65,20 +71,19 @@ namespace Ludo.Controllers
 
 
         [HttpPost]
-        public ActionResult New(FormCollection form)
+        public ActionResult New(NewGameViewModel model)
         {
-            
+
             //Create new Game object
             var game = new GameEngine.Game
             {
-                GameId = GameEngine.Helpers.GameHelper.GetNextGameId(),
-                Name = form["name"],
-                NoPlayers = int.Parse(form["no_players"]),
-
+                GameId = GameHelper.GetNextGameId(),
+                Name = model.Name,
+                NoPlayers = model.NoPlayers,
             };
-            
+
             // Add player 1
-            game.AddPlayer(form["player_name"], form["player_email"], int.Parse(form["color_id"]));
+            game.AddPlayer(model.PlayerName, model.PlayerEmail, model.PlayerColorId);
 
             GameHelper.AllGames.Add(game.GameId, game);
 
@@ -88,5 +93,9 @@ namespace Ludo.Controllers
 
             return Redirect("/game/" + game.GameId);
         }
+
+
+        
+
     }
 }

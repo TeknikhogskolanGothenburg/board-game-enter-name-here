@@ -7,12 +7,24 @@ namespace Ludo.Models.ViewModels
 {
     public class NewGameViewModel
     {
-        public string Name;
-        public int noPlayers;
+        public string Name { get; set; }
+        public int NoPlayers { get; set; }
+        public string PlayerName { get; set; }
+        public string PlayerEmail { get; set; }
+        public int PlayerColorId { get; set; }
+    }
+
+    public class JoinGameListViewModel
+    {
+        public Dictionary<int, GameEngine.Game> Games = new Dictionary<int, GameEngine.Game>();
     }
 
     public class JoinGameViewModel
     {
-        public List<GameEngine.Game> Games = new List<GameEngine.Game>();
+        public int GameId { get; set; }
+        public GameEngine.Game Game { get; set; }
+        public string PlayerName { get; set; }
+        public string PlayerEmail { get; set; }
+        public int PlayerColorId { get; set; }
     }
 }

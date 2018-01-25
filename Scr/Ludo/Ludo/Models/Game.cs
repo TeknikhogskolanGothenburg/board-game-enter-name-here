@@ -5,8 +5,10 @@ using System.Web;
 
 namespace Ludo.Models
 {
-    public class Game
-    {
-       
+    public class GameModel
+    {   
+        public int GameId { get; set; }
+        public GameEngine.Game Game { get; set; }
+        
     }
 }
