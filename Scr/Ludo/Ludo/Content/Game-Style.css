@@ -5,10 +5,11 @@
 .marker-container {
     width: 55px;
     height: 55px;
-    border: 2px solid #000;
+    /*border: 2px solid #000;*/
     margin: auto;
     position: static;
     background-color: #D5D5D5;
+    z-index: 12
 }
 
 .player-head, .player-body, .player-foot {
