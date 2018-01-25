@@ -1,247 +1,101 @@
-﻿body {
-    background-color: #bf4523!important;
-}
+body {
+	background-color: #423a4f;
+	width: 100%;
+	height: 100%;
+	margin: 0; }
 
-.custom-container{
-    width: 768px;
-    height: 768px;
-    margin: auto;
-}
+.custom-container {
+	background-color: #4f3d3d;
+	width: 770px;
+	height: 770px;
+	position: relative;
+	margin: auto;
+	margin-top: 10px;
+	box-shadow: 0px 5px 20px 4px #000; }
 
-.game-area{
-    width: 768px;
-    height: 758px;
-    padding: 10px;
-}
+[class*="Block-"] {
+	background-color: #c5c5c5;
+	width: 55px;
+	height: 55px;
+	display: inline-flex; }
 
-[class*="Cube-"]{
-    width: 49px;
-    height: 49px;
-    border: 1px solid black;
-    background-color: #943131;
-    float: left;
-}
+.Blue-Corridor, .Yellow-Corridor, .Red-Corridor, .Green-Corridor {
+	position: inherit;
+	z-index: 10;
+	padding: 0; }
 
-.CreatorPerson{
-    font-size: 20px;
-    display: inline-flex;
-    padding-left: 3px;
-}
+.Blue-Corridor {
+	width: 175px;
+	height: 295px;
+	left: 299px; }
 
-/*A little stylyng needs fixing*/
-.Row-1 [class*="Cube-"] {
-    border: none;
-}
+.Yellow-Corridor {
+	width: 295px;
+	height: 175px;
+	left: 479px;
+	top: 1px; }
 
-.Row-15 [class*="Cube-"] {
-    border: none;
-}
+.Red-Corridor {
+	width: 175px;
+	left: 300px; }
 
-.Row-2 [class="Cube-1"] {
-    border: none;
-}
+.Green-Corridor {
+	width: 295px;
+	height: 175px;
+	bottom: 479px;
+	left: 0; }
 
-.Row-2 [class="Cube-15"] {
-    border: none;
-}
+.Block-5, .Block-6, .Block-8, .Block-11, .Block-14 {
+	background-color: #135B7A; }
 
-.Row-3 [class="Cube-1"] {
-    border: none;
-}
+.Block-24, .Block-25, .Block-26, .Block-27, .Block-32 {
+	background-color: #e0a839; }
 
-.Row-3 [class="Cube-15"] {
-    border: none;
-}
+.Block-38, .Block-41, .Block-45, .Block-47, .Block-48 {
+	background-color: #C23817; }
 
-.Row-4 [class="Cube-1"] {
-    border: none;
-}
+.Block-57, .Block-62, .Block-63, .Block-64, .Block-65 {
+	background-color: #118C43; }
 
-.Row-4 [class="Cube-15"] {
-    border: none;
-}
+.Green-Home, .Blue-Home, .Red-Home, .Yellow-Home {
+	width: 290px;
+	height: 290px;
+	position: inherit;
+	z-index: 11; }
 
-.Row-5 [class="Cube-1"] {
-    border: none;
-}
+.Green-Home {
+	bottom: 950px;
+	background-color: #118C43; }
 
-.Row-5 [class="Cube-15"] {
-    border: none;
-}
+.Blue-Home {
+	bottom: 1240px;
+	left: 480px;
+	background-color: #135B7A; }
 
-.Row-6 [class="Cube-1"] {
-    border: none;
-}
+.Yellow-Home {
+	left: 480px;
+	bottom: 1050px;
+	background-color: #e0a839; }
 
-.Row-6 [class="Cube-15"] {
-    border: none;
-}
+.Red-Home {
+	bottom: 1340px;
+	background-color: #C23817; }
 
-.Row-7 [class="Cube-1"] {
-    border: none;
-}
+.Middle-Circle {
+	position: inherit;
+	background-color: #4e4e4e;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	bottom: 1800px;
+	left: 310px;
+	z-index: 12; }
 
-.Row-7 [class="Cube-15"] {
-    border: none;
-}
+.Middle-Circle p {
+	text-align: center;
+	font-size: 25px;
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	padding-top: 58px; }
 
-.Row-8 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-8 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-9 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-9 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-10 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-10 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-11 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-11 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-12 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-12 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-13 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-13 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-14 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-14 [class="Cube-15"] {
-    border: none;
-}
-
-.Row-15 [class="Cube-1"] {
-    border: none;
-}
-
-.Row-15 [class="Cube-15"] {
-    border: none;
-}
-/*End*/
-
-
-/*Yellow House*/
-.Row-2 [class="Cube-2"] {
-    background-color: #B5BF00;
-}
-
-.Row-2 [class="Cube-5"] {
-    background-color: #B5BF00;
-}
-
-.Row-5 [class="Cube-2"] {
-    background-color: #B5BF00;
-}
-
-.Row-5 [class*="Cube-5"] {
-    background-color: #B5BF00;
-}
-
-/*Green House*/
-.Row-2 [class="Cube-11"] {
-    background-color: #007F57;
-}
-
-.Row-2 [class="Cube-14"] {
-    background-color: #007F57;
-}
-
-.Row-5 [class="Cube-11"] {
-    background-color: #007F57;
-}
-
-.Row-5 [class="Cube-14"] {
-    background-color: #007F57;
-}
-
-/*Purple House*/
-.Row-11 [class="Cube-11"] {
-    background-color: #6E3ABE;
-}
-
-.Row-11 [class="Cube-14"] {
-    background-color: #6E3ABE;
-}
-
-.Row-14 [class="Cube-11"] {
-    background-color: #6E3ABE;
-}
-
-.Row-14 [class="Cube-14"] {
-    background-color: #6E3ABE;
-}
-
-/*Orange House*/
-.Row-11 [class="Cube-2"] {
-    background-color: #FF5E00;
-}
-
-.Row-11 [class="Cube-5"] {
-    background-color: #FF5E00;
-}
-
-.Row-14 [class="Cube-2"] {
-    background-color: #FF5E00;
-}
-
-.Row-14 [class="Cube-5"] {
-    background-color: #FF5E00;
-}
-
-/*Town Center*/
-.Row-7 [class="Cube-8"] {
-    background-color: #007F57;
-}
-
-.Row-8 [class="Cube-7"] {
-    background-color: #B5BF00;
-}
-
-.Row-9 [class="Cube-8"] {
-    background-color: #FF5E00;
-}
-
-.Row-8 [class="Cube-9"] {
-    background-color: #6E3ABE;
-}
-
-
-/*Player Area*/
-.player-area{
-    width: 340px;
-    height: 735px;
-    margin: 15px 10px 10px 10px;
-    background-color: #b0b0b0;
-    float: right;
-}
+/*# sourceMappingURL=style.css.map */
