@@ -1,0 +1,1 @@
+As a user I want to be able to choose the color of my in-game character / brick / marker
