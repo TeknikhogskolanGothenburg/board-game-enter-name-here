@@ -37,8 +37,18 @@ namespace Ludo.Helpers
             }
             return -1;
         }
+        // för att spara hela game-objektet till json --> cookie
+        //
+        //MemoryStream stream1 = new MemoryStream();
+        //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(GameEngine.Game));
+        //ser.WriteObject(stream1, game);
 
-
+        //    stream1.Position = 0;
+        //    StreamReader sr = new StreamReader(stream1);
+        //Console.Write("JSON form of Game object: ");
+        //    Console.WriteLine(sr.ReadToEnd());
+        //    stream1.Position = 0;
+        //    GameEngine.Game game2 = (GameEngine.Game)ser.ReadObject(stream1);
 
         public static void SetArrayCookieValue(string name, string value)
         {

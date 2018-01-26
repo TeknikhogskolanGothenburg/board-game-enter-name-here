@@ -122,16 +122,7 @@ namespace Ludo.Controllers
 
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());
-            MemoryStream stream1 = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(GameEngine.Game));
-            ser.WriteObject(stream1, game);
-
-            stream1.Position = 0;
-            StreamReader sr = new StreamReader(stream1);
-            Console.Write("JSON form of Game object: ");
-            Console.WriteLine(sr.ReadToEnd());
-            stream1.Position = 0;
-            GameEngine.Game game2 = (GameEngine.Game)ser.ReadObject(stream1);
+            
 
             //return View("New", model);
             return RedirectToRoute("Game", new { id = game.GameId.ToString() });
