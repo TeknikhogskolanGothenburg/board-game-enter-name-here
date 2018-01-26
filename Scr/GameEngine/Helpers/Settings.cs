@@ -30,10 +30,10 @@ namespace GameEngine.Helpers
             };
         public static readonly Dictionary<int, int> ColorHomePosition = new Dictionary<int, int>()
             {
-                {0, 1000 },
-                {1, 2000 },
-                {2, 3000 },
-                {3, 4000 }
+                {0, 1001 },
+                {1, 1002 },
+                {2, 1003 },
+                {3, 1004 }
             };
 
 

@@ -22,7 +22,7 @@ namespace GameEngine
             Bricks = GeneratePlayerBricks();
         }
 
-
+        
         private List<Brick> GeneratePlayerBricks()
         {
             var bricks = new List<Brick>();

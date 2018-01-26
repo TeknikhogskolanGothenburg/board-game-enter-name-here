@@ -7,6 +7,8 @@ using Ludo.Models;
 using Ludo.Models.ViewModels;
 using Ludo.Helpers;
 using GameEngine.Helpers;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace Ludo.Controllers
 {
@@ -86,7 +88,7 @@ namespace Ludo.Controllers
             return RedirectToRoute("Game", new { id = game.GameId });
             //return View("Game",gameModel);
         }
-
+        
 
         [HttpGet]
         public ActionResult New()
@@ -120,11 +122,30 @@ namespace Ludo.Controllers
 
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());
+            MemoryStream stream1 = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(GameEngine.Game));
+            ser.WriteObject(stream1, game);
+
+            stream1.Position = 0;
+            StreamReader sr = new StreamReader(stream1);
+            Console.Write("JSON form of Game object: ");
+            Console.WriteLine(sr.ReadToEnd());
+            stream1.Position = 0;
+            GameEngine.Game game2 = (GameEngine.Game)ser.ReadObject(stream1);
 
             //return View("New", model);
             return RedirectToRoute("Game", new { id = game.GameId.ToString() });
         }
 
+        [HttpGet]
+        public ActionResult Move(GameModel model)
+        {
+
+
+            
+
+            return View("Game", model);
+        }
 
 
 
