@@ -38,3 +38,45 @@
     bottom: 10px;
 }
 
+.Blue-Base, .Green-Base, .Yellow-Base, .Red-Base {
+    width: 190px;
+    height: 190px;
+    background-color: #fff;
+    z-index: 20;
+    margin: auto;
+    position: inherit;
+    top: 20%;
+    opacity: 0.8
+}
+
+[class*="Block-60"], [class*="Block-61"] {
+    width: 90px;
+    height: 90px;
+    position: inherit;
+    left: 3px;
+    top: 2px
+}
+
+[class*="Block-60"] .marker-container, [class*="Block-61"] .marker-container {
+    width: 90px;
+    height: 90px;
+    padding-top: 20%;
+    background-color: #fff;
+    opacity: 0.8
+}
+
+.Blue-Player {
+    background-color: #135B7A
+}
+
+.Yellow-Player {
+    background-color: #e0a839
+}
+
+.Red-Player {
+    background-color: #C23817
+}
+
+.Green-Player {
+    background-color: #118C43
+}
