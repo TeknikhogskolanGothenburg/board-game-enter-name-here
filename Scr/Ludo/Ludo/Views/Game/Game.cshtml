@@ -2,94 +2,119 @@
 @{
     ViewBag.Title = @Model.Game.Name;
     Layout = "~/Views/Shared/_GameLayout.cshtml";
+
 }
-@{ 
+@{
     string name = "";
 
     if (@Model.Game.CurrentPlayer != null)
     {
         name = Model.Game.CurrentPlayer.Name;
-        
+
     }
+    var playerId = Model.Game.CurrentPlayer.ColorId;
+
 }
 <div class="custom-container">
 
     <div class="Blue-Corridor">
-        <div class="Block-5"></div>
-        <div class="Block-6"></div>
-        <div class="Block-7"></div>
-        <div class="Block-4"></div>
-        <div class="Block-101"></div>
-        <div class="Block-200 Block-8"></div>
-        <div class="Block-3"></div>
-        <div class="Block-102"></div>
-        <div class="Block-9"></div>
-        <div class="Block-2"></div>
-        <div class="Block-103"></div>
-        <div class="Block-10"></div>
-        <div class="Block-1"></div>
-        <div class="Block-104"></div>
-        <div class="Block-11"></div>
+        <div class="Block-5">@Html.Action("_Game", new { bId = Model.Bricks[5], pId = playerId, active = Model.Active[5] })</div>
+        <div class="Block-6">@Html.Action("_Game", new { bId = Model.Bricks[6], pId = playerId, active = Model.Active[6] })</div>
+        <div class="Block-7">@Html.Action("_Game", new { bId = Model.Bricks[7], pId = playerId, active = Model.Active[7] })</div>
+        <div class="Block-4">@Html.Action("_Game", new { bId = Model.Bricks[4], pId = playerId, active = Model.Active[4] })</div>
+        <div class="Block-101">@Html.Action("_Game", new { bId = Model.Bricks[101], pId = playerId, active = Model.Active[101] })</div>
+        <div class="Block-200 Block-8">@Html.Action("_Game", new { bId = Model.Bricks[8], pId = playerId, active = Model.Active[8] })</div>
+        <div class="Block-3">@Html.Action("_Game", new { bId = Model.Bricks[3], pId = playerId, active = Model.Active[3] })</div>
+        <div class="Block-102">@Html.Action("_Game", new { bId = Model.Bricks[102], pId = playerId, active = Model.Active[102] })</div>
+        <div class="Block-9">@Html.Action("_Game", new { bId = Model.Bricks[9], pId = playerId, active = Model.Active[9] })</div>
+        <div class="Block-2">@Html.Action("_Game", new { bId = Model.Bricks[2], pId = playerId, active = Model.Active[2] })</div>
+        <div class="Block-103">@Html.Action("_Game", new { bId = Model.Bricks[103], pId = playerId, active = Model.Active[103] })</div>
+        <div class="Block-10">@Html.Action("_Game", new { bId = Model.Bricks[10], pId = playerId, active = Model.Active[10] })</div>
+        <div class="Block-1">@Html.Action("_Game", new { bId = Model.Bricks[1], pId = playerId, active = Model.Active[1] })</div>
+        <div class="Block-104">@Html.Action("_Game", new { bId = Model.Bricks[104], pId = playerId, active = Model.Active[104] })</div>
+        <div class="Block-11">@Html.Action("_Game", new { bId = Model.Bricks[11], pId = playerId, active = Model.Active[11] })</div>
     </div>
 
     <div class="Yellow-Corridor">
-        <div class="Block-12"></div>
-        <div class="Block-13"></div>
-        <div class="Block-14"></div>
-        <div class="Block-15"></div>
-        <div class="Block-16"></div>
-        <div class="Block-108"></div>
-        <div class="Block-107"></div>
-        <div class="Block-106"></div>
-        <div class="Block-105"></div>
-        <div class="Block-17"></div>
-        <div class="Block-22"></div>
-        <div class="Block-21"></div>
-        <div class="Block-20"></div>
-        <div class="Block-201 Block-19"></div>
-        <div class="Block-18"></div>
+        <div class="Block-12">@Html.Action("_Game", new { bId = Model.Bricks[12], pId = playerId, active = Model.Active[12] })</div>
+        <div class="Block-13">@Html.Action("_Game", new { bId = Model.Bricks[13], pId = playerId, active = Model.Active[13] })</div>
+        <div class="Block-14">@Html.Action("_Game", new { bId = Model.Bricks[14], pId = playerId, active = Model.Active[14] })</div>
+        <div class="Block-15">@Html.Action("_Game", new { bId = Model.Bricks[15], pId = playerId, active = Model.Active[15] })</div>
+        <div class="Block-16">@Html.Action("_Game", new { bId = Model.Bricks[16], pId = playerId, active = Model.Active[16] })</div>
+        <div class="Block-108">@Html.Action("_Game", new { bId = Model.Bricks[108], pId = playerId, active = Model.Active[108] })</div>
+        <div class="Block-107">@Html.Action("_Game", new { bId = Model.Bricks[107], pId = playerId, active = Model.Active[107] })</div>
+        <div class="Block-106">@Html.Action("_Game", new { bId = Model.Bricks[106], pId = playerId, active = Model.Active[106] })</div>
+        <div class="Block-105">@Html.Action("_Game", new { bId = Model.Bricks[105], pId = playerId, active = Model.Active[105] })</div>
+        <div class="Block-17">@Html.Action("_Game", new { bId = Model.Bricks[17], pId = playerId, active = Model.Active[17] })</div>
+        <div class="Block-22">@Html.Action("_Game", new { bId = Model.Bricks[22], pId = playerId, active = Model.Active[22] })</div>
+        <div class="Block-21">@Html.Action("_Game", new { bId = Model.Bricks[21], pId = playerId, active = Model.Active[21] })</div>
+        <div class="Block-20">@Html.Action("_Game", new { bId = Model.Bricks[10], pId = playerId, active = Model.Active[10] })</div>
+        <div class="Block-201 Block-19">@Html.Action("_Game", new { bId = Model.Bricks[19], pId = playerId, active = Model.Active[19] })</div>
+        <div class="Block-18">@Html.Action("_Game", new { bId = Model.Bricks[18], pId = playerId, active = Model.Active[18] })</div>
     </div>
 
     <div class="Red-Corridor">
-        <div class="Block-33"></div>
-        <div class="Block-112"></div>
-        <div class="Block-23"></div>
-        <div class="Block-32"></div>
-        <div class="Block-111"></div>
-        <div class="Block-24"></div>
-        <div class="Block-31"></div>
-        <div class="Block-110"></div>
-        <div class="Block-25"></div>
-        <div class="Block-202 Block-30"></div>
-        <div class="Block-109"></div>
-        <div class="Block-26"></div>
-        <div class="Block-29"></div>
-        <div class="Block-28"></div>
-        <div class="Block-27"></div>
+        <div class="Block-33">@Html.Action("_Game", new { bId = Model.Bricks[33], pId = playerId, active = Model.Active[33] })</div>
+        <div class="Block-112">@Html.Action("_Game", new { bId = Model.Bricks[112], pId = playerId, active = Model.Active[112] })</div>
+        <div class="Block-23">@Html.Action("_Game", new { bId = Model.Bricks[23], pId = playerId, active = Model.Active[23] })</div>
+        <div class="Block-32">@Html.Action("_Game", new { bId = Model.Bricks[32], pId = playerId, active = Model.Active[32] })</div>
+        <div class="Block-111">@Html.Action("_Game", new { bId = Model.Bricks[111], pId = playerId, active = Model.Active[111] })</div>
+        <div class="Block-24">@Html.Action("_Game", new { bId = Model.Bricks[24], pId = playerId, active = Model.Active[24] })</div>
+        <div class="Block-31">@Html.Action("_Game", new { bId = Model.Bricks[31], pId = playerId, active = Model.Active[31] })</div>
+        <div class="Block-110">@Html.Action("_Game", new { bId = Model.Bricks[110], pId = playerId, active = Model.Active[110] })</div>
+        <div class="Block-25">@Html.Action("_Game", new { bId = Model.Bricks[25], pId = playerId, active = Model.Active[25] })</div>
+        <div class="Block-202 Block-30">@Html.Action("_Game", new { bId = Model.Bricks[30], pId = playerId, active = Model.Active[30] })</div>
+        <div class="Block-109">@Html.Action("_Game", new { bId = Model.Bricks[109], pId = playerId, active = Model.Active[109] })</div>
+        <div class="Block-26">@Html.Action("_Game", new { bId = Model.Bricks[26], pId = playerId, active = Model.Active[26] })</div>
+        <div class="Block-29">@Html.Action("_Game", new { bId = Model.Bricks[29], pId = playerId, active = Model.Active[29] })</div>
+        <div class="Block-28">@Html.Action("_Game", new { bId = Model.Bricks[28], pId = playerId, active = Model.Active[28] })</div>
+        <div class="Block-27">@Html.Action("_Game", new { bId = Model.Bricks[27], pId = playerId, active = Model.Active[27] })</div>
     </div>
 
     <div class="Green-Corridor">
-        <div class="Block-40"></div>
-        <div class="Block-203 Block-41"></div>
-        <div class="Block-42"></div>
-        <div class="Block-43"></div>
-        <div class="Block-44"></div>
-        <div class="Block-39"></div>
-        <div class="Block-113"></div>
-        <div class="Block-114"></div>
-        <div class="Block-115"></div>
-        <div class="Block-116"></div>
-        <div class="Block-38"></div>
-        <div class="Block-37"></div>
-        <div class="Block-36"></div>
-        <div class="Block-35"></div>
-        <div class="Block-34"></div>
+        <div class="Block-40">@Html.Action("_Game", new { bId = Model.Bricks[40], pId = playerId, active = Model.Active[40] })</div>
+        <div class="Block-203 Block-41">@Html.Action("_Game", new { bId = Model.Bricks[41], pId = playerId, active = Model.Active[41] })</div>
+        <div class="Block-42">@Html.Action("_Game", new { bId = Model.Bricks[42], pId = playerId, active = Model.Active[42] })</div>
+        <div class="Block-43">@Html.Action("_Game", new { bId = Model.Bricks[43], pId = playerId, active = Model.Active[43] })</div>
+        <div class="Block-44">@Html.Action("_Game", new { bId = Model.Bricks[44], pId = playerId, active = Model.Active[44] })</div>
+        <div class="Block-39">@Html.Action("_Game", new { bId = Model.Bricks[39], pId = playerId, active = Model.Active[39] })</div>
+        <div class="Block-113">@Html.Action("_Game", new { bId = Model.Bricks[113], pId = playerId, active = Model.Active[113] })</div>
+        <div class="Block-114">@Html.Action("_Game", new { bId = Model.Bricks[114], pId = playerId, active = Model.Active[114] })</div>
+        <div class="Block-115">@Html.Action("_Game", new { bId = Model.Bricks[115], pId = playerId, active = Model.Active[115] })</div>
+        <div class="Block-116">@Html.Action("_Game", new { bId = Model.Bricks[116], pId = playerId, active = Model.Active[116] })</div>
+        <div class="Block-38">@Html.Action("_Game", new { bId = Model.Bricks[38], pId = playerId, active = Model.Active[38] })</div>
+        <div class="Block-37">@Html.Action("_Game", new { bId = Model.Bricks[37], pId = playerId, active = Model.Active[37] })</div>
+        <div class="Block-36">@Html.Action("_Game", new { bId = Model.Bricks[36], pId = playerId, active = Model.Active[36] })</div>
+        <div class="Block-35">@Html.Action("_Game", new { bId = Model.Bricks[35], pId = playerId, active = Model.Active[35] })</div>
+        <div class="Block-34">@Html.Action("_Game", new { bId = Model.Bricks[34], pId = playerId, active = Model.Active[34] })</div>
     </div>
 
-    <div class="Green-Home"></div>
-    <div class="Blue-Home"></div>
-    <div class="Yellow-Home"></div>
-    <div class="Red-Home"></div>
+    <div class="Green-Home">
+        @Html.Action("_Game", new { bId = Model.Bricks[1013], pId = playerId, active = Model.Active[1013] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1014], pId = playerId, active = Model.Active[1014] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1015], pId = playerId, active = Model.Active[1015] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1016], pId = playerId, active = Model.Active[1016] })
+    </div>
+    <div class="Blue-Home">
+        @Html.Action("_Game", new { bId = Model.Bricks[1001], pId = playerId, active = Model.Active[1001] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1002], pId = playerId, active = Model.Active[1002] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1003], pId = playerId, active = Model.Active[1003] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1004], pId = playerId, active = Model.Active[1004] })
+    </div>
+    <div class="Yellow-Home">
+        @Html.Action("_Game", new { bId = Model.Bricks[1005], pId = playerId, active = Model.Active[1005] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1006], pId = playerId, active = Model.Active[1006] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1007], pId = playerId, active = Model.Active[1007] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1008], pId = playerId, active = Model.Active[1008] })
+        
+    </div>
+    <div class="Red-Home">
+        @Html.Action("_Game", new { bId = Model.Bricks[1009], pId = playerId, active = Model.Active[1009] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1010], pId = playerId, active = Model.Active[1010] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1011], pId = playerId, active = Model.Active[1011] })
+        @Html.Action("_Game", new { bId = Model.Bricks[1012], pId = playerId, active = Model.Active[1012] })
+        
+    </div>
 
     <div class="Middle-Circle">
         <p>Current player:</p>

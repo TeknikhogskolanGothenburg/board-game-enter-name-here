@@ -22,6 +22,7 @@ namespace GameEngine
             Bricks = GeneratePlayerBricks();
         }
 
+       
         
         private List<Brick> GeneratePlayerBricks()
         {
@@ -32,7 +33,7 @@ namespace GameEngine
                 {
                     Id = i,
                     ColorId = this.ColorId,
-                    Position = Settings.ColorHomePosition[this.ColorId]
+                    Position = Settings.PlayerHomePosition[this.ColorId] + i
                 });
                 
             }

@@ -28,4 +28,12 @@ namespace Ludo.Models.ViewModels
         public string PlayerEmail { get; set; }
         public string PlayerColor { get; set; }
     }
+
+    public class _GameViewModel
+    {
+        public int BrickId { get; set; }
+        public int PlayerId { get; set; }
+        public bool Active { get; set; }
+
+    }
 }

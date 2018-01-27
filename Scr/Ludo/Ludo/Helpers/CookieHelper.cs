@@ -24,15 +24,38 @@ namespace Ludo.Helpers
         }
        
 
+        public static GameEngine.Game GetGameByCookie()
+        {
+            var id = GetGameId();
+            if(id != -1)
+            {
+                return GameEngine.Helpers.GameHelper.GetGameById(id);
+            }
+
+            return null;
+        }
 
         public static int GetGameId()
         {
             var myCookie = HttpContext.Current.Request.Cookies["Game"];
             if(myCookie!= null)
             {
-                if (myCookie.Values.Get("Id") != null)
+                if (myCookie.Values.Get("Id") != null && int.TryParse(myCookie.Values.Get("Id"), out int id))
                 {
-                    return int.Parse(myCookie.Values.Get("Id"));
+                    return id;
+                }
+            }
+            return -1;
+        }
+
+        public static int GetPlayerColorId()
+        {
+            var myCookie = HttpContext.Current.Request.Cookies["Player"];
+            if (myCookie != null)
+            {
+                if (myCookie.Values.Get("Id") != null && int.TryParse(myCookie.Values.Get("Id"), out int id))
+                {
+                    return id;
                 }
             }
             return -1;
@@ -44,6 +67,7 @@ namespace Ludo.Helpers
         //ser.WriteObject(stream1, game);
 
         //    stream1.Position = 0;
+
         //    StreamReader sr = new StreamReader(stream1);
         //Console.Write("JSON form of Game object: ");
         //    Console.WriteLine(sr.ReadToEnd());

@@ -12,18 +12,27 @@ namespace Ludo
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-           
+
+
+
             routes.MapRoute(
                 "Game",
                 "game/{id}",
-                new { controller = "Game", action = "Game"},
+                new { controller = "Game", action = "Game" },
                 new { id = @"\d+" }
 
             );
             routes.MapRoute(
+                "Move",
+                "game/move",
+                new { controller = "Game", action = "Move" }
+                //new { playedId = @"\d+", brickId = @"\d+" }
+            );
+
+            routes.MapRoute(
                 "GameDefault",
                 "game/{action}",
-                new { controller = "Game", action = "New" }
+                new { controller = "Game" }
             );
 
             routes.MapRoute(

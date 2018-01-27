@@ -19,7 +19,6 @@ namespace GameEngine
         public Player CurrentPlayer { get; set; }
 
         public int NoPlayers;
-
         public List<int> TakenColorIds
         {
             get
@@ -38,7 +37,13 @@ namespace GameEngine
         //}
 
 
+        
 
+        public Game()
+        {
+            Dice = new Dice();
+            GameId = GameHelper.GetNextGameId();
+        }
 
         public bool JoinExistingGame(string name, string email, int colorId)
         {
@@ -54,7 +59,7 @@ namespace GameEngine
                 catch (Exception)
                 {
                     //Ignore
-                    Console.Write("Player could not be added.");
+                   
                 }
                 return true;
 
@@ -62,40 +67,32 @@ namespace GameEngine
             return false;
         }
 
-        public void LeaveGame(int playerId)
+        
+        public void UpdateGameMove(int playerId, int brickId)
         {
-            //maybe send obj Player instead of Id
-        }
+            
+            var brick = Players[playerId].Bricks[brickId];
+            var newPos = brick.PossibleNewPosition;
+            var occupiedBy = IsPositionOccupied(newPos);
 
+            brick.MoveToNewPosition(occupiedBy);
+            
+        }
 
 
         public void NextTurn()
         {
-
-            var currentIndex = Players.IndexOf(CurrentPlayer);
-            var lastIndex = Players.IndexOf(Players.Last());
-
-            for (var i = currentIndex; i <= lastIndex; i++)
-            {
-                if (i == lastIndex)
-                {
-                    i = -1;
-                }
-
-                if (!Players[i + 1].IsFinished && !((i + 1) > lastIndex))
-                {
-                    CurrentPlayer = Players[i + 1];
-                }
-            }
-
             Dice.RollDice();
+            CurrentPlayer = GetNextPlayer();
+
+            UpdatePossibleMoves();           
         }
 
 
 
         public void AddPlayer(string name, string email, int colorId)
         {
-            if (Players.Count() < NoPlayers)
+            if (!IsFullGame())
             {
                 var p = new Player
                 {
@@ -103,11 +100,16 @@ namespace GameEngine
                     Email = email,
                     ColorId = colorId
                 };
+
                 Players.Add(p);
             }
             //ordna Players[] efter colorId så turordningen blir rätt.
         }
 
+        public bool IsFullGame()
+        {
+            return (Players.Count() == NoPlayers);
+        }
 
         private List<int> GetTakenColorIds()
         {
@@ -121,6 +123,66 @@ namespace GameEngine
             return takenIds;
         }
 
+      
+
+        private Brick IsPositionOccupied(int position)
+        {
+            //persons.Where(p => p.Appearance
+            //    .Where(a => listOfSearchedIds.Contains(a.Id))
+            //    .Any()).ToList();
+
+            foreach (Player p in Players)
+            {
+                foreach(Brick b in p.Bricks)
+                {
+                    if (b.Position == position)
+                    {
+                        return b;
+                    }
+                }      
+            }
+
+            return null;
+        }
+
+        private Player GetNextPlayer()
+        {
+            var currentIndex = Players.IndexOf(CurrentPlayer);
+            var lastIndex = Players.IndexOf(Players.Last());
+
+            var nextPlayer = CurrentPlayer;
+            var i = currentIndex;
+
+            while (nextPlayer == CurrentPlayer) {
+
+                if (i == lastIndex)
+                {
+                    i = -1;
+                }
+
+                if (!Players[i + 1].IsFinished && !((i + 1) > lastIndex))
+                {
+                    nextPlayer = Players[i + 1];
+
+                }
+
+                i++;
+            }
+
+            return nextPlayer;
+            
+        }
+
+        private void UpdatePossibleMoves()
+        {
+            foreach (Brick b in CurrentPlayer.Bricks)
+            {
+                var pos = b.GetNewPosition(Dice.Result);
+                var occupiedBy = IsPositionOccupied(pos);
+
+                b.CanMoveToPosition(pos, occupiedBy);
+            }
+        }
         //public List<int> GetAvailableColorIds()
         //{
         //    var availableIds = new List<int>(Settings.ColorId.Keys);
@@ -137,6 +199,10 @@ namespace GameEngine
 
         //}
 
+        public void LeaveGame(int playerId)
+        {
+            //maybe send obj Player instead of Id
+        }
 
         public void EndGame()
         {

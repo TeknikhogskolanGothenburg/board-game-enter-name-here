@@ -21,6 +21,15 @@ namespace GameEngine.Helpers
             return false;
         }
 
+        public static Game GetGameById(int id)
+        {
+            if (GameExists(id))
+            {
+                return AllGames[id];
+            }
+            return null;
+        }
+
         public static int GetNextGameId()
         {
             if (AllGames.Count() == 0)
