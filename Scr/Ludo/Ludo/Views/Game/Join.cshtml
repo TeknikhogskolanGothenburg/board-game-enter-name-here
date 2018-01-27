@@ -1,0 +1,35 @@
+﻿@model Ludo.Models.ViewModels.JoinGameViewModel
+
+@{
+    ViewBag.Title = "Join";
+    Layout = "~/Views/Shared/_GameLayout.cshtml";
+}
+
+<h2>Let's join a game!'</h2>
+
+@using (Html.BeginForm("Join", "Game", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="gameId">Enter Game Id</label>
+        <input type="text" class="form-control" name="GameId" id="gameid" placeholder="#345678">
+    </div>
+      <div class="form-group">
+        <label for="playerName-1">Name of Player</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Player 1" name="PlayerName">
+      </div>
+    <div class="form-group">
+        <label for="player-1">What color is this player choosing?</label>
+        <select class="form-control" id="colorForPlayer-1" name="PlayerColor">
+            <option>Blue</option>
+            <option>Yellow</option>
+            <option>Red</option>
+            <option>Green</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="playerName-1">Email addres</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="example@gmail.com" name="PlayerEmail">
+    </div>
+    <input type="submit" class="btn btn-primary mb-2" value="Join" />
+}
+

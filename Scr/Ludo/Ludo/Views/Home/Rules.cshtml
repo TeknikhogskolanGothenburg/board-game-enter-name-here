@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Rules";
+    var message = "Hello World";
+}
+
+<div class="bg-white" style="padding: 5px;margin-top: 10px;border-radius: 2%;">
+    <section>
+        <h2>Rules</h2>
+        <p>This is where the rules will be listed</p>
+        <ol type="I">
+            <li>Don't hack it, please</li>
+            <li>The aim of the game is to be the first player to reach the "goal" with all of the pawns</li>
+            <li>Two to four players, four seperate colours and four pawns per player</li>
+            <li>At the start of the game and according to colour all four pawns are placed in each players "home", outside the boards playfield</li>
+            <li>In the game one dice is used and one throw per person per round</li>
+            <li>Player enters game when dice hits six and then places pawn on the first square on the board, else next players turn </li>
+            <li>Two pawns of the same colour can't be placed on the same tile</li>
+            <li>If you land on another players pawn you have "taken it out", and that pawn has to return "home"</li>
+            <li>Player is free to choose a move according to the rules during the duration of the game</li>
+            <li>If no move is possible according to the rules, then it is the next players turn</li>
+            <li>Each move is made in the forward direction, clockwise around the playfield for all players, until pawn reaches the "final strech"</li>
+            <li>When a pawn has moved through the the board the aim is to get the pawn into the respective colours "final stretch" or directly into the goal</li>
+            <li>Each colours "final strech" consists of 5 squares</li>
+            <li>In the "final strech" the pawn or pawns are safe from other players</li>
+            <li>To exit the game with a pawn the dice has to have the exakt number that it takes for the selected pawn to move into the goal.</li>
+            <li>The game is won by the player that is first with moving all its pawns into the goal.</li>
+            <li>The duration of the game lasts until the next to the last player has moved all its pawns to the goal</li>
+        </ol>
+    </section>
+
+    <section><!--Playing around-->
+    @ViewBag.Result1
+    </section>
+</div>

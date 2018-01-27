@@ -1,0 +1,40 @@
+﻿body {
+    color: white!important;
+}
+
+.marker-container {
+    width: 55px;
+    height: 55px;
+    /*border: 2px solid #000;*/
+    margin: auto;
+    position: static;
+    background-color: #D5D5D5;
+    z-index: 12
+}
+
+.player-head, .player-body, .player-foot {
+    background-color: #118C43;
+    position: relative;
+    border: 0.5px solid #fff;
+    margin: auto;
+}
+
+.player-head {
+    width: 22px;
+    height: 22px;
+    border-radius: 45%;
+}
+
+.player-body {
+    width: 20px;
+    height: 30px;
+    bottom: 2px;
+    border-radius: 10%;
+}
+
+.player-foot {
+    width: 24px;
+    height: 10px;
+    bottom: 10px;
+}
+

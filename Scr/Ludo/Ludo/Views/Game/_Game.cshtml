@@ -1,0 +1,44 @@
+﻿@model Ludo.Models.ViewModels._GameViewModel
+@{
+
+
+    var color = "";
+    switch (Model.PlayerId)
+    {
+        case 0:
+            color = @".blue";
+            break;
+        case 1:
+            color = @".yellow";
+            break;
+        case 2:
+            color = @".red";
+            break;
+        case 3:
+            color = @".green";
+            break;
+
+    }
+
+    if (Model.BrickId >= 0)
+    {
+        <div class="marker-container @color">
+            @{
+                if (Model.Active)
+                {
+                    <a href="@Url.Action("Move", new { playerId = Model.PlayerId, brickId = Model.BrickId })">
+                        <div class="player-head"></div>
+                        <div class="player-body"></div>
+                        <div class="player-foot"></div>
+                    </a>
+                }
+                else
+                {
+                    <div class="player-head"></div>
+                    <div class="player-body"></div>
+                    <div class="player-foot"></div>
+                }
+            }
+        </div>
+    }
+}
