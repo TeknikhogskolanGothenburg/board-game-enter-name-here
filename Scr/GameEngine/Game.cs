@@ -14,9 +14,11 @@ namespace GameEngine
         //Main Game object, everything is controlled through this object.
 
         public int GameId { get; set; }
+        public Guid GId { get; set; }
         public string Name { get; set; }
         public List<Player> Players = new List<Player>();
         public Player CurrentPlayer { get; set; }
+        public int CurrentTurn { get; set; } = 0;
 
         public int NoPlayers;
         public List<int> TakenColorIds
@@ -37,21 +39,22 @@ namespace GameEngine
         //}
 
 
-        
+
 
         public Game()
         {
             Dice = new Dice();
             GameId = GameHelper.GetNextGameId();
+            GId = Guid.NewGuid();
         }
 
         public bool JoinExistingGame(string name, string email, int colorId)
         {
-           
+
 
             if (!this.GetTakenColorIds().Contains(colorId))
             {
-                
+
                 try
                 {
                     AddPlayer(name, email, colorId);
@@ -59,7 +62,7 @@ namespace GameEngine
                 catch (Exception)
                 {
                     //Ignore
-                   
+
                 }
                 return true;
 
@@ -67,16 +70,32 @@ namespace GameEngine
             return false;
         }
 
-        
+
         public void UpdateGameMove(int playerId, int brickId)
         {
-            
+
             var brick = Players[playerId].Bricks[brickId];
             var newPos = brick.PossibleNewPosition;
             var occupiedBy = IsPositionOccupied(newPos);
 
             brick.MoveToNewPosition(occupiedBy);
-            
+
+        }
+
+        public void StartGame()
+        {
+            var result = 0;
+            foreach(Player p in Players)
+            {
+                Dice.RollDice();
+                if (Dice.Result > result)
+                {
+                    CurrentPlayer = p;
+                }
+            }
+            CurrentTurn++;
+            UpdatePossibleMoves();
+
         }
 
 
@@ -84,8 +103,9 @@ namespace GameEngine
         {
             Dice.RollDice();
             CurrentPlayer = GetNextPlayer();
+            CurrentTurn++;
 
-            UpdatePossibleMoves();           
+            UpdatePossibleMoves();
         }
 
 
@@ -123,7 +143,7 @@ namespace GameEngine
             return takenIds;
         }
 
-      
+
 
         private Brick IsPositionOccupied(int position)
         {
@@ -133,13 +153,13 @@ namespace GameEngine
 
             foreach (Player p in Players)
             {
-                foreach(Brick b in p.Bricks)
+                foreach (Brick b in p.Bricks)
                 {
                     if (b.Position == position)
                     {
                         return b;
                     }
-                }      
+                }
             }
 
             return null;
@@ -153,7 +173,8 @@ namespace GameEngine
             var nextPlayer = CurrentPlayer;
             var i = currentIndex;
 
-            while (nextPlayer == CurrentPlayer) {
+            while (nextPlayer == CurrentPlayer)
+            {
 
                 if (i == lastIndex)
                 {
@@ -170,7 +191,7 @@ namespace GameEngine
             }
 
             return nextPlayer;
-            
+
         }
 
         private void UpdatePossibleMoves()

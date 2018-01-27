@@ -161,6 +161,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CookieHelper.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\ViewHelper.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\ViewModels\AllViewModels.cs" />

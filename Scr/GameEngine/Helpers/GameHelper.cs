@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace GameEngine.Helpers
 {
     public static class GameHelper
@@ -14,7 +15,7 @@ namespace GameEngine.Helpers
 
         public static bool GameExists(int gameId)
         {
-            if(AllGames.ContainsKey(gameId))
+            if (AllGames.ContainsKey(gameId))
             {
                 return true;
             }
@@ -26,6 +27,17 @@ namespace GameEngine.Helpers
             if (GameExists(id))
             {
                 return AllGames[id];
+            }
+            return null;
+        }
+        public static Game GetGameById(int id, string gid)
+        {
+            if (GameExists(id) && Guid.TryParse(gid, out Guid GId))
+            {
+                if (AllGames[id].GId == GId)
+                {
+                    return AllGames[id];
+                }
             }
             return null;
         }
@@ -47,7 +59,7 @@ namespace GameEngine.Helpers
         {
             int colorId;
             color = color.ToLower();
-            if(Settings.ColorId.Values.Contains(color))
+            if (Settings.ColorId.Values.Contains(color))
             {
                 colorId = Settings.ColorId.FirstOrDefault(x => x.Value == color).Key;
                 return colorId;
@@ -70,5 +82,7 @@ namespace GameEngine.Helpers
 
             return list;
         }
+
+
     }
 }

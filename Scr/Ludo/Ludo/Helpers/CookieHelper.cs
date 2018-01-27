@@ -27,9 +27,10 @@ namespace Ludo.Helpers
         public static GameEngine.Game GetGameByCookie()
         {
             var id = GetGameId();
+            var gid = GetGameGId();
             if(id != -1)
             {
-                return GameEngine.Helpers.GameHelper.GetGameById(id);
+                return GameEngine.Helpers.GameHelper.GetGameById(id,gid);
             }
 
             return null;
@@ -46,6 +47,20 @@ namespace Ludo.Helpers
                 }
             }
             return -1;
+        }
+
+        public static string GetGameGId()
+        {
+            var myCookie = HttpContext.Current.Request.Cookies["Game"];
+            if (myCookie != null)
+            {
+                if (myCookie.Values.Get("GId") != null)
+                {
+                    var gid = myCookie.Values.Get("GId");
+                    return gid;
+                }
+            }
+            return null;
         }
 
         public static int GetPlayerColorId()

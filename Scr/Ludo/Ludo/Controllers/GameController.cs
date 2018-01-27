@@ -34,7 +34,17 @@ namespace Ludo.Controllers
                     model.Game = GameHelper.GetGameById(id);
                     model.Game.CurrentPlayer = model.Game.Players[0];
                 }
-                UpdateBrickList(model);
+
+                if (model.Game.IsFullGame() && model.Game.CurrentTurn == 0)
+                {
+                    model.Game.StartGame();
+                    UpdateBrickList(model);
+                }
+                else //if(model.Game.CurrentTurn > 0)
+                {
+                    UpdateBrickList(model);
+                }
+
             }
             catch (Exception)
             {
@@ -46,7 +56,8 @@ namespace Ludo.Controllers
 
         public ActionResult _Game(int bId, int pId, bool active)
         {
-            var model = new _GameViewModel {
+            var model = new _GameViewModel
+            {
                 BrickId = bId,
                 PlayerId = pId,
                 Active = active
@@ -60,7 +71,8 @@ namespace Ludo.Controllers
         {
             var model = new JoinGameViewModel
             {
-                Games = GameHelper.GetAllOpenGames()
+                Games = Helper.GetAllOpenGamesAsListItem()
+                //Colors = Helper.GetAvailableColors();
             };
 
             return View("Join", model);
@@ -70,8 +82,21 @@ namespace Ludo.Controllers
         [HttpPost]
         public ActionResult Join(JoinGameViewModel model)
         {
+            int gameId;
 
-            var gameId = model.GameId;
+            if (int.TryParse(model.GameIdDD, out int gId))
+            {
+                gameId = gId;
+            }
+            else if (model.GameId != 0)
+            {
+                gameId = model.GameId;
+            }
+            else {
+                return RedirectToAction("Join");
+            }
+
+            
             var game = GameHelper.AllGames[gameId];
 
             var name = model.PlayerName;
@@ -82,6 +107,7 @@ namespace Ludo.Controllers
             game.AddPlayer(name, email, colorId);
 
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
+            CookieHelper.SetArrayCookieValue("Game", "GId", game.GId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Id", colorId.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Name", name);
@@ -92,7 +118,7 @@ namespace Ludo.Controllers
                 GameId = gameId,
                 Game = game
             };
-           
+
 
             return RedirectToRoute("Game", new { id = game.GameId });
             //return View("Game",gameModel);
@@ -129,6 +155,7 @@ namespace Ludo.Controllers
 
 
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
+            CookieHelper.SetArrayCookieValue("Game", "GId", game.GId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Id", colorId.ToString());
             CookieHelper.SetArrayCookieValue("Player", "Name", model.PlayerName);
@@ -160,7 +187,7 @@ namespace Ludo.Controllers
         {
 
             var brickPos = new Dictionary<int, int>();
-            
+
             //string html = $@"<div class=""marker - container"">
             //                    <a href=""{0}"">   
             //                        <div class=""player-head""></div>
@@ -170,7 +197,7 @@ namespace Ludo.Controllers
             //                </div>", Url.Action("Move", new { playerId = playerColorId, brickId = i });
 
             var playerColorId = CookieHelper.GetPlayerColorId();
-            
+
             var active = false;
 
             if (model.Game.CurrentPlayer.ColorId == CookieHelper.GetPlayerColorId())
@@ -178,27 +205,28 @@ namespace Ludo.Controllers
 
                 foreach (GameEngine.Player p in model.Game.Players)
                 {
-                    foreach(GameEngine.Brick b in p.Bricks)
+                    foreach (GameEngine.Brick b in p.Bricks)
                     {
                         brickPos.Add(b.Position, b.Id);
-                        if(model.Game.CurrentPlayer == p)
+                        if (model.Game.CurrentPlayer == p)
                         {
                             active = true;
-                        } else
+                        }
+                        else
                         {
                             active = false;
                         }
                         model.Active.Add(b.Position, active);
                     }
-                    
+
                 }
 
                 for (int i = 1; i <= 1016; i++)
                 {
 
                     if (brickPos.ContainsKey(i))
-                    {                        
-                        model.Bricks.Add(i, brickPos[i]);                       
+                    {
+                        model.Bricks.Add(i, brickPos[i]);
                     }
                     else
                     {
@@ -212,11 +240,11 @@ namespace Ludo.Controllers
 
                     if (i == Settings.MaxPosition)
                     {
-                        i = Settings.PlayerFinalRowStart[0]-1;
+                        i = Settings.PlayerFinalRowStart[0] - 1;
                     }
                     else if (i == 116)
                     {
-                        i = Settings.PlayerHomePosition[0]-1;
+                        i = Settings.PlayerHomePosition[0] - 1;
                     }
 
                 }
