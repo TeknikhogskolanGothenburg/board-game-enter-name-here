@@ -22,12 +22,12 @@ namespace GameEngine.Helpers
         public static readonly int DiceMaxValue = 6;
         public static readonly int DiceMinValue = 1;
 
-        public static readonly Dictionary<int,string> ColorId = new Dictionary<int,string>()
+        public static readonly Dictionary<int, string> ColorId = new Dictionary<int, string>()
             {
-                {0,"blue"},
-                {1,"yellow"},
-                {2,"red"},
-                {3,"green"}
+                {0, "blue"},
+                {1, "yellow"},
+                {2, "red"},
+                {3, "green"}
             };
         public static readonly Dictionary<int, int> PlayerHomePosition = new Dictionary<int, int>()
             {
