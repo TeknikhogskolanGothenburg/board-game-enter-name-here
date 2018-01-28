@@ -17,14 +17,12 @@ namespace GameEngine
         public bool IsFinished { get; set; } = false;
         public int FinalPosition { get; set; }
 
-        public Player()
-        {
-            Bricks = GeneratePlayerBricks();
-        }
+        //public Player()
+        //{
+        //    Bricks = GeneratePlayerBricks();
+        //}
 
-       
-        
-        private List<Brick> GeneratePlayerBricks()
+        public void GeneratePlayerBricks()
         {
             var bricks = new List<Brick>();
             for (int i = 0; i < Settings.NoPlayerBricks; i++)
@@ -32,13 +30,29 @@ namespace GameEngine
                 bricks.Add(new Brick
                 {
                     Id = i,
-                    ColorId = this.ColorId,
+                    ColorId = ColorId,
                     Position = Settings.PlayerHomePosition[this.ColorId] + i
                 });
-                
+
             }
-            return bricks;
+            Bricks = bricks;
         }
+
+        //private List<Brick> GeneratePlayerBricks()
+        //{
+        //    var bricks = new List<Brick>();
+        //    for (int i = 0; i < Settings.NoPlayerBricks; i++)
+        //    {
+        //        bricks.Add(new Brick
+        //        {
+        //            Id = i,
+        //            ColorId = ColorId,
+        //            Position = Settings.PlayerHomePosition[this.ColorId] + i
+        //        });
+
+        //    }
+        //    return bricks;
+        //}
 
         //public Player(string Name, string Email)
         //{

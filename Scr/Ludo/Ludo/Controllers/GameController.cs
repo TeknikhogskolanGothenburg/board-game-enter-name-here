@@ -32,7 +32,7 @@ namespace Ludo.Controllers
                 {
                     model.GameId = id;
                     model.Game = GameHelper.GetGameById(id);
-                    model.Game.CurrentPlayer = model.Game.Players[0];
+                    // model.Game.CurrentPlayer = model.Game.Players[0];
                 }
 
                 if (model.Game.IsFullGame() && model.Game.CurrentTurn == 0)
@@ -92,11 +92,12 @@ namespace Ludo.Controllers
             {
                 gameId = model.GameId;
             }
-            else {
+            else
+            {
                 return RedirectToAction("Join");
             }
 
-            
+
             var game = GameHelper.AllGames[gameId];
 
             var name = model.PlayerName;
@@ -187,6 +188,7 @@ namespace Ludo.Controllers
         {
 
             var brickPos = new Dictionary<int, int>();
+            var playerPosIdList = new Dictionary<int, int>();
 
             //string html = $@"<div class=""marker - container"">
             //                    <a href=""{0}"">   
@@ -200,55 +202,58 @@ namespace Ludo.Controllers
 
             var active = false;
 
-            if (model.Game.CurrentPlayer.ColorId == CookieHelper.GetPlayerColorId())
+            //if (model.Game.CurrentPlayer.ColorId == CookieHelper.GetPlayerColorId())
+            //{
+
+            foreach (GameEngine.Player p in model.Game.Players)
             {
-
-                foreach (GameEngine.Player p in model.Game.Players)
+                foreach (GameEngine.Brick b in p.Bricks)
                 {
-                    foreach (GameEngine.Brick b in p.Bricks)
+                    brickPos.Add(b.Position, b.Id);
+                    playerPosIdList.Add(b.Position, p.ColorId);
+                    if (p == model.Game.CurrentPlayer)
                     {
-                        brickPos.Add(b.Position, b.Id);
-                        if (model.Game.CurrentPlayer == p)
-                        {
-                            active = true;
-                        }
-                        else
-                        {
-                            active = false;
-                        }
-                        model.Active.Add(b.Position, active);
-                    }
-
-                }
-
-                for (int i = 1; i <= 1016; i++)
-                {
-
-                    if (brickPos.ContainsKey(i))
-                    {
-                        model.Bricks.Add(i, brickPos[i]);
+                        active = true;
                     }
                     else
                     {
-                        model.Bricks.Add(i, -1);
+                        active = false;
                     }
-
-                    if (!model.Active.ContainsKey(i))
-                    {
-                        model.Active.Add(i, false);
-                    }
-
-                    if (i == Settings.MaxPosition)
-                    {
-                        i = Settings.PlayerFinalRowStart[0] - 1;
-                    }
-                    else if (i == 116)
-                    {
-                        i = Settings.PlayerHomePosition[0] - 1;
-                    }
-
+                    model.Active.Add(b.Position, active);
                 }
+
             }
+
+            for (int i = 1; i <= 1016; i++)
+            {
+
+                if (brickPos.ContainsKey(i))
+                {
+                    model.Bricks.Add(i, brickPos[i]);
+                    model.PlayerPosId.Add(i, playerPosIdList[i]);
+                }
+                else
+                {
+                    model.Bricks.Add(i, -1);
+                    model.PlayerPosId.Add(i, -1);
+                }
+
+                if (!model.Active.ContainsKey(i))
+                {
+                    model.Active.Add(i, false);
+                }
+
+                if (i == Settings.MaxPosition)
+                {
+                    i = Settings.PlayerFinalRowStart[0] - 1;
+                }
+                else if (i == 116)
+                {
+                    i = Settings.PlayerHomePosition[0] - 1;
+                }
+
+            }
+            //}
         }
 
     }

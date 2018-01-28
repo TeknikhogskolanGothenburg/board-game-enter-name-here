@@ -11,6 +11,7 @@ namespace Ludo.Models
         public GameEngine.Game Game { get; set; }
 
         public Dictionary<int, int> Bricks = new Dictionary<int, int>();
+        public Dictionary<int, int> PlayerPosId = new Dictionary<int, int>();        
         public Dictionary<int, bool> Active = new Dictionary<int, bool>();
         
 

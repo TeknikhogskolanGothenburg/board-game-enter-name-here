@@ -17,7 +17,7 @@ namespace GameEngine
         public Guid GId { get; set; }
         public string Name { get; set; }
         public List<Player> Players = new List<Player>();
-        public Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer { get; set; } = null;
         public int CurrentTurn { get; set; } = 0;
 
         public int NoPlayers;
@@ -120,7 +120,8 @@ namespace GameEngine
                     Email = email,
                     ColorId = colorId
                 };
-
+                
+                p.GeneratePlayerBricks();
                 Players.Add(p);
             }
             //ordna Players[] efter colorId så turordningen blir rätt.
