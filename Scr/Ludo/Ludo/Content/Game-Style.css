@@ -80,3 +80,76 @@
 .Green-Player {
     background-color: #118C43
 }
+
+[class*="dice-"] {
+    width: 23px;
+    height: 23px;
+    position: relative;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.dice-2 {
+    top: -23px;
+    left: 57px;
+}
+
+.dice-3 {
+    top: -18px;
+}
+
+.dice-4 {
+    left: 28px;
+    bottom: 41px;
+    z-index: 15;
+}
+
+.dice-5 {
+    top: -35px;
+}
+
+.dice-6 {
+    top: -87px;
+    left: 56px;
+}
+
+.dice-7 {
+    top: -82px;
+    left: 56px;
+}
+
+[class*="mark-"] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000;
+    position: relative;
+    z-index: 15;
+    left: 6px;
+    top: 6px;
+}
+
+/*One*/
+/*.mark-1, .mark-2, .mark-3, .mark-5, .mark-6, .mark-7 {
+    display: none; 
+}*/
+
+/*Two*/
+/*.mark-1, .mark-3, .mark-4, .mark-6, .mark-7 {
+    display: none; 
+}*/
+
+/*Three*/
+/*.mark-1, .mark-3, .mark-6, .mark-7 {
+    display: none;
+}*/
+
+/*Four*/
+/*.mark-3, .mark-4, .mark-6 {
+    display: none; 
+}*/
+
+/*Five*/
+/*.mark-3, .mark-6 {
+    display: none; 
+}*/
