@@ -73,8 +73,9 @@ namespace GameEngine
 
         public void UpdateGameMove(int playerId, int brickId)
         {
+            var p = GameHelper.GetPlayerById(playerId, this);
 
-            var brick = Players[playerId].Bricks[brickId];
+            var brick = p.Bricks[brickId];
             var newPos = brick.PossibleNewPosition;
             var occupiedBy = IsPositionOccupied(newPos);
 

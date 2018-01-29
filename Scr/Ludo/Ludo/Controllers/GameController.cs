@@ -76,6 +76,19 @@ namespace Ludo.Controllers
             return PartialView("_Game", model);
         }
 
+        public ActionResult Skip()
+        {
+            var model = new GameModel
+            {
+                GameId = CookieHelper.GetGameId(),
+                Game = CookieHelper.GetGameByCookie(),
+            };
+                        
+            model.Game.NextTurn();
+
+            return RedirectToAction("Game", "Game", new { id = model.GameId });
+        }
+
         [HttpGet]
         public ActionResult Join()
         {
@@ -129,9 +142,11 @@ namespace Ludo.Controllers
                 GameId = gameId,
                 Game = game
             };
+            //UpdateBrickList(gameModel);
 
-
-            return RedirectToRoute("Game", new { id = game.GameId });
+            //return RedirectToRoute("Game", new { id = game.GameId });
+            return RedirectToAction("Game", "Game", new { id = game.GameId });
+            
             //return View("Game",gameModel);
         }
 
@@ -190,8 +205,8 @@ namespace Ludo.Controllers
             model.Game.NextTurn();
 
 
-
-            return View("Game", model);
+            return RedirectToAction("Game", "Game", new { id = model.GameId });
+            //return View("Game", model);
         }
 
         private void UpdatePlayerDiceinfo(GameModel model)
@@ -256,14 +271,17 @@ namespace Ludo.Controllers
                     else
                     {
                         active = false;
-                        var url = Url.Action("Game", "Game", new { id = model.Game.GameId, next = true });
+                        var url = Url.Action("Skip", "Game", new {});
                         if (!model.Game.IsFullGame())
                         {
                             model.StatusMessage = "Waiting for players";
                         }
-                        else
+                        else if (player == currentPlayer)
                         {
                             model.StatusMessage = $@"Can't move, <a href=""{url}"">next player</a>";
+                        } else
+                        {
+                            model.StatusMessage = "Waiting for " + currentPlayer.Name;
                         }
 
 

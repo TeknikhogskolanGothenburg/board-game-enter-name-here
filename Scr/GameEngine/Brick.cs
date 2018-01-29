@@ -78,7 +78,7 @@ namespace GameEngine
         //}
         public void CanMoveToPosition(int position, int diceResult, Brick brick = null)
         {
-            if (Position >= Settings.PlayerHomePosition[0] && diceResult == 6 && (brick == null || brick.ColorId != ColorId))
+            if (Position >= Settings.PlayerHomePosition[0] && (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue) && (brick == null || brick.ColorId != ColorId))
             {
                 CanMove = true;
                 PossibleNewPosition = position;
@@ -118,7 +118,7 @@ namespace GameEngine
 
             int result = 0;
 
-            if (steps == 0 && Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId]+3 && diceResult == Settings.DiceMaxValue)
+            if (steps == 0 && Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId]+3 && (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue))
             {
                 result = Settings.PlayerStartPosition[ColorId];
             }

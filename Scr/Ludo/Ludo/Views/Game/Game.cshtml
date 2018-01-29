@@ -6,16 +6,21 @@
 }
 @{
     string name = "";
-
+    IHtmlString status = Html.Raw("");
     if (@Model.Game.CurrentPlayer != null)
     {
-        name = Model.Game.CurrentPlayer.Name;
+        name = "Current player: " + Model.Game.CurrentPlayer.Name;
 
+    }
+    if(!Model.StatusMessage.IsEmpty())
+    {
+        status = Html.Raw(Model.StatusMessage);
     }
 }
 
 <div class="text-center current-player">
-    <p>Current player: @name</p>
+    <p>@name</p>
+    <p>@status</p>
 </div>
 
 <div class="custom-container">
@@ -113,7 +118,7 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1016], pId = Model.PlayerPosId[1016], active = Model.Active[1016] })
             </div>
         </div>
-        <div class="dice-result">@Model.DiceResult[3]</div>
+        <div class="d-result">@Model.DiceResult[3]</div>
     </div>
 
     <div class="Blue-Home">
@@ -136,7 +141,7 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1004], pId = Model.PlayerPosId[1004], active = Model.Active[1004] })
             </div>
         </div>
-        <div class="dice-result">@Model.DiceResult[0]</div>
+        <div class="d-result">@Model.DiceResult[0]</div>
     </div>
     <div class="Yellow-Home">
         <div class="player-name">@Model.PlayerName[1]</div>
@@ -154,7 +159,7 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1008], pId = Model.PlayerPosId[1008], active = Model.Active[1008] })
             </div>
         </div>
-        <div class="dice-result">@Model.DiceResult[1]</div>
+        <div class="d-result">@Model.DiceResult[1]</div>
     </div>
     <div class="Red-Home">
         <div class="player-name">@Model.PlayerName[2]</div>
@@ -172,7 +177,7 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1012], pId = Model.PlayerPosId[1012], active = Model.Active[1012] })
             </div>
         </div>
-        <div class="dice-result">@Model.DiceResult[2]</div>
+        <div class="d-result">@Model.DiceResult[2]</div>
     </div>
 
     <div class="Middle-Circle">
