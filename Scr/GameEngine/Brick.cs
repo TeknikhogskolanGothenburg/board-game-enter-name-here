@@ -76,10 +76,14 @@ namespace GameEngine
         //    }
 
         //}
-        public void CanMoveToPosition(int position, Brick brick = null)
+        public void CanMoveToPosition(int position, int diceResult, Brick brick = null)
         {
-
-            if (brick == null || brick.ColorId != ColorId)
+            if (Position >= Settings.PlayerHomePosition[0] && diceResult == 6 && (brick == null || brick.ColorId != ColorId))
+            {
+                CanMove = true;
+                PossibleNewPosition = position;
+            }
+            else if (brick == null || brick.ColorId != ColorId)
             {
                 CanMove = true;
                 PossibleNewPosition = position;
@@ -107,18 +111,18 @@ namespace GameEngine
             var maxPos = Settings.MaxPosition;
             var totalBlocksIncFinal = Settings.MaxPosition + Settings.NoBlocksFinalRow;
             var endPos = Settings.PlayerEndPosition[ColorId];
-            var steps = stepsTaken + diceResult;
+            var steps = stepsTaken;
 
             var endRowStartPos = Settings.PlayerFinalRowStart[ColorId];
             var endRowEndPos = endRowStartPos + Settings.NoBlocksFinalRow - 1;
 
             int result = 0;
 
-            if (steps == 0 && Position == Settings.PlayerHomePosition[ColorId] && diceResult == Settings.DiceMaxValue)
+            if (steps == 0 && Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId]+3 && diceResult == Settings.DiceMaxValue)
             {
                 result = Settings.PlayerStartPosition[ColorId];
             }
-            else if (steps <= Settings.MaxSteps)
+            else if (steps > 0 && steps <= Settings.MaxSteps)
             {
                 if (newPos < maxPos)
                 {
@@ -155,21 +159,33 @@ namespace GameEngine
 
             if (brick == null)
             {
-                if (stepsTaken == 0)
+                if (Position >= Settings.PlayerHomePosition[0])
                 {
                     Position = Settings.PlayerStartPosition[ColorId];
+                    
                 }
                 else
                 {
                     Position = PossibleNewPosition;
+                    
                 }
-
+               
             }
             else
             {
                 Capture(brick);
                 Position = PossibleNewPosition;
             }
+
+            //needs attention, calculation is incorrect. if position is 43 then new position is 4, 
+
+            if(Position >38 && PossibleNewPosition <= 1 )
+            {
+                stepsTaken += Settings.MaxPosition - Position;
+                stepsTaken += PossibleNewPosition - Settings.MinPosition;
+            }
+
+            stepsTaken += PossibleNewPosition - Position;
 
             return true;
         }

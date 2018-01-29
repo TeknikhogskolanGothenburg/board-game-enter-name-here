@@ -12,8 +12,8 @@
         name = Model.Game.CurrentPlayer.Name;
 
     }
-    
-    
+
+
 }
 <div class="custom-container">
 
@@ -90,6 +90,7 @@
     </div>
 
     <div class="Green-Home">
+        <div class="player-name">@Model.PlayerName[3]</div>
         <div class="Green-Base">
             <div class="Block-601">
                 @*Model.Game.Players[3].Name;*@
@@ -109,9 +110,11 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1016], pId = Model.PlayerPosId[1016], active = Model.Active[1016] })
             </div>
         </div>
+        <div class="dice-result">@Model.DiceResult[3]</div>
     </div>
 
     <div class="Blue-Home">
+        <div class="player-name">@Model.PlayerName[0]</div>
         <div class="Blue-Base">
             <div class="Block-605">
                 @*Model.Game.Players[0].Name;*@
@@ -130,8 +133,10 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1004], pId = Model.PlayerPosId[1004], active = Model.Active[1004] })
             </div>
         </div>
+        <div class="dice-result">@Model.DiceResult[0]</div>
     </div>
     <div class="Yellow-Home">
+        <div class="player-name">@Model.PlayerName[1]</div>
         <div class="Yellow-Base">
             <div class="Block-609">
                 @Html.Action("_Game", new { bId = Model.Bricks[1005], pId = Model.PlayerPosId[1005], active = Model.Active[1005] })
@@ -146,8 +151,10 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1008], pId = Model.PlayerPosId[1008], active = Model.Active[1008] })
             </div>
         </div>
+        <div class="dice-result">@Model.DiceResult[1]</div>
     </div>
     <div class="Red-Home">
+        <div class="player-name">@Model.PlayerName[2]</div>
         <div class="Red-Base">
             <div class="Block-613">
                 @Html.Action("_Game", new { bId = Model.Bricks[1009], pId = Model.PlayerPosId[1009], active = Model.Active[1009] })
@@ -162,10 +169,13 @@
                 @Html.Action("_Game", new { bId = Model.Bricks[1012], pId = Model.PlayerPosId[1012], active = Model.Active[1012] })
             </div>
         </div>
+        <div class="dice-result">@Model.DiceResult[2]</div>
     </div>
 
-    <div class="Middle-Circle">
+    <!--<div class="Middle-Circle">
         <p>Current player:</p>
-        <p id="PlayerName">@name</p>
+        <p id="PlayerName"></p>-->
+    <div class="Middle-Circle">
+        <p>@Html.Raw(Model.StatusMessage)</p>
     </div>
 </div>

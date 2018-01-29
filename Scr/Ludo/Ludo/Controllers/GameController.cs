@@ -22,7 +22,7 @@ namespace Ludo.Controllers
         }
 
 
-        public ActionResult Game(int id)
+        public ActionResult Game(int id, bool next = false)
         {
             var model = new GameModel();
 
@@ -35,12 +35,22 @@ namespace Ludo.Controllers
                     // model.Game.CurrentPlayer = model.Game.Players[0];
                 }
 
-                if (model.Game.IsFullGame() && model.Game.CurrentTurn == 0)
+                if (model.Game.HasWon() != null)
+                {
+                    model.StatusMessage = @"Player " + model.Game.CurrentPlayer.Name + "has won!";
+                    UpdateBrickList(model, true);
+                }
+                else if (model.Game.IsFullGame() && model.Game.CurrentTurn == 0)
                 {
                     model.Game.StartGame();
                     UpdateBrickList(model);
                 }
-                else //if(model.Game.CurrentTurn > 0)
+                else if (next)
+                {
+                    model.Game.NextTurn();
+                    UpdateBrickList(model);
+                }
+                else
                 {
                     UpdateBrickList(model);
                 }
@@ -184,26 +194,53 @@ namespace Ludo.Controllers
             return View("Game", model);
         }
 
-        private void UpdateBrickList(GameModel model)
+        private void UpdatePlayerDiceinfo(GameModel model)
+        {
+            var playerName = new Dictionary<int, string>();
+            var diceResult = new Dictionary<int, int>();
+
+            var players = model.Game.Players;
+            var count = players.Count();
+
+            for (int i = 0; i < Settings.MaxNoPlayers; i++)
+            {
+                if (count >= i)
+                {
+                    var player = players[i];
+
+                    playerName.Add(player.ColorId, player.Name);
+                    if (player == model.Game.CurrentPlayer)
+                    {
+                        diceResult.Add(player.ColorId, model.Game.Dice.Result);
+                    }
+                    else
+                    {
+                        diceResult.Add(player.ColorId, 0);
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+        }
+        /*
+         * Puts all game marker's / brick's positions and Id:s in dictionaries for print out in Game View.
+         */
+        private void UpdateBrickList(GameModel model, bool isFinished = false)
         {
 
             var brickPos = new Dictionary<int, int>();
             var playerPosIdList = new Dictionary<int, int>();
+            var playerName = model.PlayerName;
+            var diceResult = model.DiceResult;
 
-            //string html = $@"<div class=""marker - container"">
-            //                    <a href=""{0}"">   
-            //                        <div class=""player-head""></div>
-            //                        <div class=""player-body""></div>
-            //                        <div class=""player-foot""></div>
-            //                    </a>
-            //                </div>", Url.Action("Move", new { playerId = playerColorId, brickId = i });
-
-            var playerColorId = CookieHelper.GetPlayerColorId();
+            var currentPlayer = model.Game.CurrentPlayer;
+            var player = CookieHelper.GetPlayer();
 
             var active = false;
 
-            //if (model.Game.CurrentPlayer.ColorId == CookieHelper.GetPlayerColorId())
-            //{
 
             foreach (GameEngine.Player p in model.Game.Players)
             {
@@ -211,17 +248,51 @@ namespace Ludo.Controllers
                 {
                     brickPos.Add(b.Position, b.Id);
                     playerPosIdList.Add(b.Position, p.ColorId);
-                    if (p == model.Game.CurrentPlayer)
+                    if (p == currentPlayer && player == currentPlayer && b.CanMove)
                     {
                         active = true;
+                        model.StatusMessage = "";
                     }
                     else
                     {
                         active = false;
+                        var url = Url.Action("Game", "Game", new { id = model.Game.GameId, next = true });
+                        if (!model.Game.IsFullGame())
+                        {
+                            model.StatusMessage = "Waiting for players";
+                        }
+                        else
+                        {
+                            model.StatusMessage = $@"Can't move, <a href=""{url}"">next player</a>";
+                        }
+
+
                     }
                     model.Active.Add(b.Position, active);
                 }
 
+                playerName.Add(p.ColorId, p.Name);
+                if (p == currentPlayer)
+                {
+                    diceResult.Add(p.ColorId, p.Name + " rolls a " + model.Game.Dice.Result);
+                }
+                else
+                {
+                    diceResult.Add(p.ColorId, "");
+                }
+
+            }
+
+            for (int i = 0; i < Settings.MaxNoPlayers; i++)
+            {
+                if (!playerName.ContainsKey(i))
+                {
+                    playerName.Add(i, "");
+                }
+                if (!diceResult.ContainsKey(i))
+                {
+                    diceResult.Add(i, "");
+                }
             }
 
             for (int i = 1; i <= 1016; i++)
@@ -253,7 +324,17 @@ namespace Ludo.Controllers
                 }
 
             }
-            //}
+
+            if (isFinished)
+            {
+                var keys = new List<int>(model.Active.Keys);
+                foreach (int key in keys)
+                {
+                    model.Active[key] = false;
+                }
+
+            }
+
         }
 
     }

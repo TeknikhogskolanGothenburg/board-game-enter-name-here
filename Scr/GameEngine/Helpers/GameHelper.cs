@@ -30,6 +30,7 @@ namespace GameEngine.Helpers
             }
             return null;
         }
+
         public static Game GetGameById(int id, string gid)
         {
             if (GameExists(id) && Guid.TryParse(gid, out Guid GId))
@@ -37,6 +38,18 @@ namespace GameEngine.Helpers
                 if (AllGames[id].GId == GId)
                 {
                     return AllGames[id];
+                }
+            }
+            return null;
+        }
+
+        public static Player GetPlayerById(int id, Game game)
+        {
+            foreach (Player p in game.Players)
+            {
+                if(id == p.ColorId)
+                {
+                    return p;
                 }
             }
             return null;

@@ -38,6 +38,27 @@ namespace GameEngine
             Bricks = bricks;
         }
 
+        public bool HasWon() {
+
+            var list = new List<bool>();
+            
+
+            foreach(Brick b in Bricks)
+            {
+                if(b.Position >= Settings.PlayerFinalRowStart[ColorId] && b.Position < (Settings.PlayerFinalRowStart[ColorId] + Settings.NoPlayerBricks))
+                {
+                    list.Add(true);
+                }
+            }
+            if (list.Count() > 0)
+            {
+                bool result = !list.Any(x => x == false);
+                IsFinished = result;
+                return result;
+            }
+            return false;
+        }
+
         //private List<Brick> GeneratePlayerBricks()
         //{
         //    var bricks = new List<Brick>();

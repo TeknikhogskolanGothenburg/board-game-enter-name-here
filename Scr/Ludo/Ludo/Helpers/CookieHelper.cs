@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
+using GameEngine;
+using GameEngine.Helpers;
 
 namespace Ludo.Helpers
 {
@@ -58,6 +60,26 @@ namespace Ludo.Helpers
                 {
                     var gid = myCookie.Values.Get("GId");
                     return gid;
+                }
+            }
+            return null;
+        }
+
+        public static Player GetPlayer()
+        {
+            var myCookie = HttpContext.Current.Request.Cookies["Player"];
+            if (myCookie != null)
+            {
+                if (myCookie.Values.Get("Id") != null && int.TryParse(myCookie.Values.Get("Id"), out int id))
+                {
+                    var g = HttpContext.Current.Request.Cookies["Game"];
+                    if(g != null)
+                    {
+                        var game = GameHelper.AllGames[int.Parse(g.Values["Id"])];
+                        var p = GameHelper.GetPlayerById(id, game);
+                        return p;
+                    }
+                    
                 }
             }
             return null;

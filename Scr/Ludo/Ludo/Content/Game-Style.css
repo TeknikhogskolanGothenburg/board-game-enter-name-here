@@ -45,7 +45,7 @@
     z-index: 20;
     margin: auto;
     position: inherit;
-    top: 20%;
+    /*top: 20%;*/
     opacity: 0.8
 }
 
@@ -80,3 +80,13 @@
 .Green-Player {
     background-color: #118C43
 }
+
+.player-name {
+    height:50px;
+    padding:12px 0 10px 10px
+}
+
+.dice-result {
+    padding:10px 0 10px 10px
+}
+

@@ -84,6 +84,9 @@ namespace GameEngine
 
         public void StartGame()
         {
+            //Reorder Players List according to ColorId ie. playerId
+            Players.OrderBy(p => p.ColorId);
+
             var result = 0;
             foreach(Player p in Players)
             {
@@ -144,7 +147,18 @@ namespace GameEngine
             return takenIds;
         }
 
-
+        public Player HasWon()
+        {
+            foreach(Player p in Players)
+            {
+                if (p.HasWon())
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+        
 
         private Brick IsPositionOccupied(int position)
         {
@@ -167,7 +181,7 @@ namespace GameEngine
         }
 
         private Player GetNextPlayer()
-        {
+        {           
             var currentIndex = Players.IndexOf(CurrentPlayer);
             var lastIndex = Players.IndexOf(Players.Last());
 
@@ -202,7 +216,7 @@ namespace GameEngine
                 var pos = b.GetNewPosition(Dice.Result);
                 var occupiedBy = IsPositionOccupied(pos);
 
-                b.CanMoveToPosition(pos, occupiedBy);
+                b.CanMoveToPosition(pos, Dice.Result, occupiedBy);
             }
         }
         //public List<int> GetAvailableColorIds()
