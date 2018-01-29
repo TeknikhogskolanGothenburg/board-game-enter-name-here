@@ -10,7 +10,7 @@ body {
 	height: 770px;
 	position: relative;
 	margin: auto;
-	margin-top: 10px;
+	top: 5px;
 	box-shadow: 0px 5px 20px 4px #000; }
 
 [class*="Block-"] {
@@ -80,27 +80,4 @@ body {
 .Red-Home {
 	bottom: 1340px;
 	background-color: #C23817; }
-
-.Middle-Circle {
-    position: inherit;
-    background-color: #6f6f6f;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    bottom: 1800px;
-    left: 310px;
-    z-index: 12;
-}
-
-.Middle-Circle p {
-	text-align: center;
-	font-size: 23px;
-	color: #fff;
-	font-family: 'Lato', sans-serif;
-	padding-top: 14px;
-    word-break: break-word; }
-
-#PlayerName{
-    margin-top: -25px;
-}
 /*# sourceMappingURL=style.css.map */

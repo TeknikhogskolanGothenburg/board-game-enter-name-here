@@ -2,6 +2,22 @@
     color: white!important;
 }
 
+.current-player{
+    font-size: 24px;
+}
+
+.Middle-Circle {
+    position: inherit;
+    background-color: #6f6f6f;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    bottom: 1800px;
+    left: 310px;
+    z-index: 12;
+    padding-top: 30px;
+}
+
 .marker-container {
     width: 55px;
     height: 55px;
@@ -79,6 +95,90 @@
 
 .Green-Player {
     background-color: #118C43
+}
+
+[class*="dice-"] {
+    width: 23px;
+    height: 23px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 20%;
+    z-index: 10;
+}
+
+.dice-2 {
+    top: -23px;
+    left: 57px;
+}
+
+.dice-3 {
+    top: -18px;
+}
+
+.dice-4 {
+    left: 28px;
+    bottom: 41px;
+    z-index: 15;
+}
+
+.dice-5 {
+    top: -35px;
+}
+
+.dice-6 {
+    top: -87px;
+    left: 56px;
+}
+
+.dice-7 {
+    top: -82px;
+    left: 56px;
+}
+
+[class*="mark-"] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000;
+    position: relative;
+    z-index: 15;
+    left: 6px;
+    top: 6px;
+}
+
+/*One*/
+/*.mark-1, .mark-2, .mark-3, .mark-5, .mark-6, .mark-7 {
+    display: none; 
+}*/
+
+/*Two*/
+/*.mark-1, .mark-3, .mark-4, .mark-6, .mark-7 {
+    display: none; 
+}*/
+
+/*Three*/
+/*.mark-1, .mark-3, .mark-6, .mark-7 {
+    display: none;
+}*/
+
+/*Four*/
+/*.mark-3, .mark-4, .mark-6 {
+    display: none; 
+}*/
+
+/*Five*/
+.mark-3, .mark-6 {
+    display: none; 
+}
+
+.dice-container {
+    width: 80px;
+    height: 80px;
+    /*border: 2px solid #4E1813;*/
+    margin: auto;
+    position: static;
+    background-color: #fff;
+    border-radius: 10%;
 }
 
 .player-name {
