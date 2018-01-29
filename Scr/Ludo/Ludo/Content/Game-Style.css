@@ -2,6 +2,22 @@
     color: white!important;
 }
 
+.current-player{
+    font-size: 24px;
+}
+
+.Middle-Circle {
+    position: inherit;
+    background-color: #6f6f6f;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    bottom: 1800px;
+    left: 310px;
+    z-index: 12;
+    padding-top: 30px;
+}
+
 .marker-container {
     width: 55px;
     height: 55px;
@@ -86,6 +102,7 @@
     height: 23px;
     position: relative;
     background-color: #fff;
+    border-radius: 20%;
     z-index: 10;
 }
 
@@ -150,6 +167,16 @@
 }*/
 
 /*Five*/
-/*.mark-3, .mark-6 {
+.mark-3, .mark-6 {
     display: none; 
-}*/
+}
+
+.dice-container {
+    width: 80px;
+    height: 80px;
+    /*border: 2px solid #4E1813;*/
+    margin: auto;
+    position: static;
+    background-color: #fff;
+    border-radius: 10%;
+}
