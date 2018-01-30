@@ -83,7 +83,7 @@ namespace Ludo.Controllers
                 GameId = CookieHelper.GetGameId(),
                 Game = CookieHelper.GetGameByCookie(),
             };
-                        
+
             model.Game.NextTurn();
 
             return RedirectToAction("Game", "Game", new { id = model.GameId });
@@ -146,7 +146,7 @@ namespace Ludo.Controllers
 
             //return RedirectToRoute("Game", new { id = game.GameId });
             return RedirectToAction("Game", "Game", new { id = game.GameId });
-            
+
             //return View("Game",gameModel);
         }
 
@@ -255,6 +255,7 @@ namespace Ludo.Controllers
             var player = CookieHelper.GetPlayer();
 
             var active = false;
+            var canMove = false;
 
 
             foreach (GameEngine.Player p in model.Game.Players)
@@ -267,25 +268,31 @@ namespace Ludo.Controllers
                     {
                         active = true;
                         model.StatusMessage = "";
+                        canMove = true;
                     }
                     else
                     {
                         active = false;
-                        var url = Url.Action("Skip", "Game", new {});
-                        if (!model.Game.IsFullGame())
+                        if (!canMove && p == currentPlayer)
                         {
-                            model.StatusMessage = "Waiting for players";
-                        }
-                        else if (player == currentPlayer)
-                        {
-                            model.StatusMessage = $@"Can't move, <a href=""{url}"">next player</a>";
-                        } else
-                        {
-                            model.StatusMessage = "Waiting for " + currentPlayer.Name;
-                        }
+                            var url = Url.Action("Skip", "Game", new { });
+                            if (!model.Game.IsFullGame())
+                            {
+                                model.StatusMessage = "Waiting for players";
+                            }
+                            else if (player == currentPlayer)
+                            {
+                                model.StatusMessage = $@"Can't move, <a href=""{url}"">next player</a>";
+                            }
 
-
+                            else
+                            {
+                                model.StatusMessage = "Waiting for " + currentPlayer.Name;
+                            }
+                        }
                     }
+                    
+
                     model.Active.Add(b.Position, active);
                 }
 
