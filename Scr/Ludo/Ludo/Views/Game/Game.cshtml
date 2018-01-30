@@ -16,6 +16,9 @@
     {
         status = Html.Raw(Model.StatusMessage);
     }
+
+    
+
 }
 
 <div class="text-center current-player">
@@ -120,19 +123,15 @@
         <div class="player-name">@Model.PlayerName[0]</div>
         <div class="Blue-Base">
             <div class="Block-605">
-                @*Model.Game.Players[0].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1001], pId = Model.PlayerPosId[1001], active = Model.Active[1001] })
             </div>
             <div class="Block-606">
-                @*Model.Game.Players[0].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1002], pId = Model.PlayerPosId[1002], active = Model.Active[1002] })
             </div>
             <div class="Block-607">
-                @*Model.Game.Players[0].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1003], pId = Model.PlayerPosId[1003], active = Model.Active[1003] })
             </div>
             <div class="Block-608">
-                @*Model.Game.Players[0].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1004], pId = Model.PlayerPosId[1004], active = Model.Active[1004] })
             </div>
         </div>
@@ -176,6 +175,6 @@
     </div>
 
     <div class="Middle-Circle">
-       @Html.Action("_Dice")
+       @Html.Action("_Dice", new { num = Model.Game.Dice.Result})
     </div>
 </div>

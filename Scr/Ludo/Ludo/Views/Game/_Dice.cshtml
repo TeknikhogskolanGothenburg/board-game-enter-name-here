@@ -1,8 +1,9 @@
-﻿@model Ludo.Models.GameModel
+﻿@model Ludo.Models.ViewModels._Dice
 
 @{
-    var model = new Ludo.Models.GameModel();
-    var num = Model.Game.Dice.Result;
+    
+    var num = Model.Num;
+    
     if (num > 0)
     {
         if (num == 1)

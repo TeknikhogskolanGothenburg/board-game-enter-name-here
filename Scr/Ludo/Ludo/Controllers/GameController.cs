@@ -75,9 +75,13 @@ namespace Ludo.Controllers
 
             return PartialView("_Game", model);
         }
-        public ActionResult _Dice()
+        public ActionResult _Dice(int num)
         {
-            return PartialView("_Dice");
+            var model = new _Dice
+            {
+                Num = num
+            };
+            return PartialView("_Dice", model);
         }
 
         public ActionResult Skip()
@@ -167,15 +171,13 @@ namespace Ludo.Controllers
         [HttpPost]
         public ActionResult New(NewGameViewModel model)
         {
-
-            //Create new Game object
+            
             var game = new GameEngine.Game
             {
                 Name = model.Name,
                 NoPlayers = model.NoPlayers,
             };
-
-            // Add player 1
+            
             var color = model.PlayerColor;
 
             var colorId = GameHelper.GetColorId(color);
@@ -191,7 +193,7 @@ namespace Ludo.Controllers
             CookieHelper.SetArrayCookieValue("Player", "Name", model.PlayerName);
 
 
-            //return View("New", model);
+            
             return RedirectToRoute("Game", new { id = game.GameId.ToString() });
         }
 
@@ -210,7 +212,7 @@ namespace Ludo.Controllers
 
 
             return RedirectToAction("Game", "Game", new { id = model.GameId });
-            //return View("Game", model);
+            
         }
 
         private void UpdatePlayerDiceinfo(GameModel model)
@@ -244,9 +246,7 @@ namespace Ludo.Controllers
 
             }
         }
-        /*
-         * Puts all game marker's / brick's positions and Id:s in dictionaries for print out in Game View.
-         */
+        
         private void UpdateBrickList(GameModel model, bool isFinished = false)
         {
 
@@ -295,7 +295,7 @@ namespace Ludo.Controllers
                             }
                         }
                     }
-                    
+
 
                     model.Active.Add(b.Position, active);
                 }
