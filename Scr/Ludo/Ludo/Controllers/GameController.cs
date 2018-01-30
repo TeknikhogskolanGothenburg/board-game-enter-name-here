@@ -183,9 +183,6 @@ namespace Ludo.Controllers
             var colorId = GameHelper.GetColorId(color);
             game.AddPlayer(model.PlayerName, model.PlayerEmail, colorId);
 
-            GameHelper.AllGames.Add(game.GameId, game);
-
-
             CookieHelper.SetArrayCookieValue("Game", "Id", game.GameId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "GId", game.GId.ToString());
             CookieHelper.SetArrayCookieValue("Game", "Players", game.NoPlayers.ToString());

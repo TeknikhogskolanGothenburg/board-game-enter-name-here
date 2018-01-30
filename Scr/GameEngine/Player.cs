@@ -15,12 +15,9 @@ namespace GameEngine
         public string Email { get; set; }
         public List<Brick> Bricks = new List<Brick>();
         public bool IsFinished { get; set; } = false;
-        public int FinalPosition { get; set; }
+       
 
-        //public Player()
-        //{
-        //    Bricks = GeneratePlayerBricks();
-        //}
+       
 
         public void GeneratePlayerBricks()
         {

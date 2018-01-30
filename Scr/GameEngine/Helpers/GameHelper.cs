@@ -65,7 +65,7 @@ namespace GameEngine.Helpers
             }
             else
             {
-                var newId = AllGames.Count() + 1;
+                var newId = AllGames.Keys.Last() + 1;
                 return newId;
             }
         }

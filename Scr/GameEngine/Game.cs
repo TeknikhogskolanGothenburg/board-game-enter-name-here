@@ -46,6 +46,7 @@ namespace GameEngine
             Dice = new Dice();
             GameId = GameHelper.GetNextGameId();
             GId = Guid.NewGuid();
+            GameHelper.AllGames.Add(GameId, this);
         }
 
         public bool JoinExistingGame(string name, string email, int colorId)

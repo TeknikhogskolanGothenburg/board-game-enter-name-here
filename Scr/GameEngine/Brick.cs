@@ -17,7 +17,7 @@ namespace GameEngine
         public bool IsSafe { get; set; } = false;
         public bool CanMove { get; set; } = false;
         public int PossibleNewPosition { get; set; }
-        private int stepsTaken = 0;
+        public int StepsTaken = 0;
 
         
         public void CanMoveToPosition(int position, int diceResult, Brick brick = null)
@@ -56,7 +56,7 @@ namespace GameEngine
             var maxPos = Settings.MaxPosition;
             var totalBlocksIncFinal = Settings.MaxPosition + Settings.NoBlocksFinalRow;
             var endPos = Settings.PlayerEndPosition[ColorId];
-            var steps = stepsTaken;
+            var steps = StepsTaken;
 
             var endRowStartPos = Settings.PlayerFinalRowStart[ColorId];
             var endRowEndPos = endRowStartPos + Settings.NoBlocksFinalRow - 1;
@@ -142,17 +142,17 @@ namespace GameEngine
             {
                 if (Position > 38 && PossibleNewPosition <= 1)
                 {
-                    stepsTaken += Settings.MaxPosition - Position;
-                    stepsTaken += PossibleNewPosition - Settings.MinPosition;
+                    StepsTaken += Settings.MaxPosition - Position;
+                    StepsTaken += PossibleNewPosition - Settings.MinPosition;
                 }
                 else
                 {
-                    stepsTaken += PossibleNewPosition - Position;
+                    StepsTaken += PossibleNewPosition - Position;
                 }
             }
             else
             {
-                stepsTaken = int.Parse(newValue.ToString());
+                StepsTaken = int.Parse(newValue.ToString());
             }
 
 
