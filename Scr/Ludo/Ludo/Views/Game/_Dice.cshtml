@@ -2,8 +2,7 @@
 
 @{
     var model = new Ludo.Models.GameModel();
-    //var num = model.Game.Dice.Result;
-    var num = 1;
+    var num = Model.Game.Dice.Result;
     if (num > 0)
     {
         if (num == 1)
@@ -163,27 +162,4 @@
             </div>
         }
     }
-    <div class="dice-container">
-        <div class="dice-1">
-            <div class="mark-1"></div>
-        </div>
-        <div class="dice-2">
-            <div class="mark-2"></div>
-        </div>
-        <div class="dice-3">
-            <div class="mark-3"></div>
-        </div>
-        <div class="dice-4">
-            <div class="mark-4" style="display: none;"></div>
-        </div>
-        <div class="dice-5">
-            <div class="mark-5"></div>
-        </div>
-        <div class="dice-6">
-            <div class="mark-6"></div>
-        </div>
-        <div class="dice-7">
-            <div class="mark-7"></div>
-        </div>
-    </div>
 }

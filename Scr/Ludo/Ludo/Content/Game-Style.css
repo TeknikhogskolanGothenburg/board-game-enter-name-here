@@ -150,31 +150,6 @@
     top: 6px;
 }
 
-/*One*/
-/*.mark-1, .mark-2, .mark-3, .mark-5, .mark-6, .mark-7 {
-    display: none; 
-}*/
-
-/*Two*/
-/*.mark-1, .mark-3, .mark-4, .mark-6, .mark-7 {
-    display: none; 
-}*/
-
-/*Three*/
-/*.mark-1, .mark-3, .mark-6, .mark-7 {
-    display: none;
-}*/
-
-/*Four*/
-/*.mark-3, .mark-4, .mark-6 {
-    display: none; 
-}*/
-
-/*Five*/
-.mark-3, .mark-6 {
-    display: none; 
-}
-
 .dice-container {
     width: 80px;
     height: 80px;
@@ -193,4 +168,3 @@
 .d-result {
     padding:10px 0 10px 10px
 }
-
