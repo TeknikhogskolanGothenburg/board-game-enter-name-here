@@ -16,7 +16,5 @@ namespace Ludo.Models
         public Dictionary<int, string> PlayerName = new Dictionary<int, string>();
         public Dictionary<int, string> DiceResult = new Dictionary<int, string>();
         public string StatusMessage;
-        
-
     }
 }

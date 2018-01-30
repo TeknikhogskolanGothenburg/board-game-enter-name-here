@@ -101,20 +101,15 @@
         <div class="player-name">@Model.PlayerName[3]</div>
         <div class="Green-Base">
             <div class="Block-601">
-                @*Model.Game.Players[3].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1013], pId = Model.PlayerPosId[1013], active = Model.Active[1013] })
             </div>
             <div class="Block-602">
-                @*Model.Game.Players[3].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1014], pId = Model.PlayerPosId[1014], active = Model.Active[1014] })
             </div>
             <div class="Block-603">
-                @*Model.Game.Players[3].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1015], pId = Model.PlayerPosId[1015], active = Model.Active[1015] })
-
             </div>
             <div class="Block-604">
-                @*Model.Game.Players[3].Name;*@
                 @Html.Action("_Game", new { bId = Model.Bricks[1016], pId = Model.PlayerPosId[1016], active = Model.Active[1016] })
             </div>
         </div>
@@ -181,28 +176,6 @@
     </div>
 
     <div class="Middle-Circle">
-        <div class="dice-container">
-            <div class="dice-1">
-                <div class="mark-1"></div>
-            </div>
-            <div class="dice-2">
-                <div class="mark-2"></div>
-            </div>
-            <div class="dice-3">
-                <div class="mark-3"></div>
-            </div>
-            <div class="dice-4">
-                <div class="mark-4"></div>
-            </div>
-            <div class="dice-5">
-                <div class="mark-5"></div>
-            </div>
-            <div class="dice-6">
-                <div class="mark-6"></div>
-            </div>
-            <div class="dice-7">
-                <div class="mark-7"></div>
-            </div>
-        </div>
+       @Html.Action("_Dice")
     </div>
 </div>

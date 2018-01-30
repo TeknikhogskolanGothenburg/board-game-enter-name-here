@@ -192,6 +192,7 @@
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Game\Game.cshtml" />
     <Content Include="Views\Game\_Game.cshtml" />
+    <Content Include="Views\Game\_Dice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

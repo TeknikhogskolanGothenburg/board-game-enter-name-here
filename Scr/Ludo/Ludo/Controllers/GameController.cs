@@ -75,6 +75,10 @@ namespace Ludo.Controllers
 
             return PartialView("_Game", model);
         }
+        public ActionResult _Dice()
+        {
+            return PartialView("_Dice");
+        }
 
         public ActionResult Skip()
         {

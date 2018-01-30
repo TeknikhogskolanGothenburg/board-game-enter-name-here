@@ -39,4 +39,9 @@ namespace Ludo.Models.ViewModels
         public bool Active { get; set; }
 
     }
+
+    public class _Dice
+    {
+        public int Num { get; set; }
+    }
 }
