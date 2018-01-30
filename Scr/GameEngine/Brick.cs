@@ -78,12 +78,13 @@ namespace GameEngine
         //}
         public void CanMoveToPosition(int position, int diceResult, Brick brick = null)
         {
-            if (Position >= Settings.PlayerHomePosition[0] && (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue) && (brick == null || brick.ColorId != ColorId))
+            //debug
+            if (Position >= Settings.PlayerHomePosition[0] /*&& (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue)*/ && (brick == null || brick.ColorId != ColorId))
             {
                 CanMove = true;
                 PossibleNewPosition = position;
             }
-            else if (brick == null || brick.ColorId != ColorId)
+            else if (brick == null || (brick.ColorId != ColorId && !brick.IsSafe))
             {
                 CanMove = true;
                 PossibleNewPosition = position;
@@ -117,8 +118,8 @@ namespace GameEngine
             var endRowEndPos = endRowStartPos + Settings.NoBlocksFinalRow - 1;
 
             int result = 0;
-
-            if (steps == 0 && Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId]+3 && (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue))
+            //debug
+            if (steps == 0 && Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId] + 3 /*&& (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue)*/)
             {
                 result = Settings.PlayerStartPosition[ColorId];
             }
@@ -162,32 +163,59 @@ namespace GameEngine
                 if (Position >= Settings.PlayerHomePosition[0])
                 {
                     Position = Settings.PlayerStartPosition[ColorId];
-                    
+                    IsSafe = true;
+                    UpdateStepsTaken(1);
                 }
                 else
                 {
+                    UpdateStepsTaken();
                     Position = PossibleNewPosition;
-                    
+                    if (Position > Settings.PlayerFinalRowStart[0])
+                    {
+                        IsSafe = true;
+                    }
+                    else
+                    {
+                        IsSafe = false;
+                    }
                 }
-               
             }
             else
             {
                 Capture(brick);
+                UpdateStepsTaken();
                 Position = PossibleNewPosition;
             }
 
             //needs attention, calculation is incorrect. if position is 43 then new position is 4, 
 
-            if(Position >38 && PossibleNewPosition <= 1 )
+            return true;
+        }
+
+        private void UpdateStepsTaken(int? newValue = null)
+        {
+            if (newValue == null)
             {
-                stepsTaken += Settings.MaxPosition - Position;
-                stepsTaken += PossibleNewPosition - Settings.MinPosition;
+                if (Position > 38 && PossibleNewPosition <= 1)
+                {
+                    stepsTaken += Settings.MaxPosition - Position;
+                    stepsTaken += PossibleNewPosition - Settings.MinPosition;
+                }
+                else
+                {
+                    stepsTaken += PossibleNewPosition - Position;
+                }
+
+
+            }
+            else
+            {
+                stepsTaken = int.Parse(newValue.ToString());
             }
 
-            stepsTaken += PossibleNewPosition - Position;
 
-            return true;
+
+
         }
 
     }

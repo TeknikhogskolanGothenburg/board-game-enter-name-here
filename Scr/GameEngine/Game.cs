@@ -216,8 +216,11 @@ namespace GameEngine
             {
                 var pos = b.GetNewPosition(Dice.Result);
                 var occupiedBy = IsPositionOccupied(pos);
-
+                
                 b.CanMoveToPosition(pos, Dice.Result, occupiedBy);
+                // debug
+                var a = b.CanMove;
+                var x = b.PossibleNewPosition;
             }
         }
         //public List<int> GetAvailableColorIds()

@@ -23,9 +23,13 @@
     height: 55px;
     /*border: 2px solid #000;*/
     margin: auto;
-    position: static;
+    position: absolute;
     background-color: #D5D5D5;
     z-index: 12
+}
+
+.marker-container > a {
+    display:block;
 }
 
 .player-head, .player-body, .player-foot {
