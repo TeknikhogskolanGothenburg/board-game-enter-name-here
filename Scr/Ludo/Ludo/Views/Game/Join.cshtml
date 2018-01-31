@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_GameLayout.cshtml";
     ViewBag.Active5 = "active";
 }
+<div class="CustomBoxShadow">
 <h2>Let's join a game!</h2>
 
 @using (Html.BeginForm("Join", "Game", FormMethod.Post))
@@ -34,4 +35,4 @@
     </div>
     <input type="submit" class="btn btn-secondary mb-2" value="Join" />
 }
-
+</div>
