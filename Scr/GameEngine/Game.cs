@@ -80,9 +80,16 @@ namespace GameEngine
             var newPos = brick.PossibleNewPosition;
             var occupiedBy = IsPositionOccupied(newPos);
 
-            brick.MoveToNewPosition(occupiedBy);
+            var posList = new List<int>();
+            if (occupiedBy != null)
+            {
+                posList = GameHelper.GetFreeHomeIds(occupiedBy.ColorId, this);
+            }
+
+            brick.MoveToNewPosition(posList, occupiedBy);
 
         }
+
 
         public void StartGame()
         {
@@ -97,6 +104,7 @@ namespace GameEngine
                 {
                     CurrentPlayer = p;
                 }
+                result = Dice.Result;
             }
             CurrentTurn++;
             UpdatePossibleMoves();

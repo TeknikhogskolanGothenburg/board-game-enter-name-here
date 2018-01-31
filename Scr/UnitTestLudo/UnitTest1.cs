@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GameEngine;
 using GameEngine.Helpers;
+using System.Collections.Generic;
 
 namespace UnitTestLudo
 {
@@ -68,7 +69,8 @@ namespace UnitTestLudo
             game.Players[0].Bricks[0].StepsTaken = 2;
             var pos = game.Players[0].Bricks[0].GetNewPosition(4);
             game.Players[0].Bricks[0].CanMoveToPosition(pos, dice);
-            game.Players[0].Bricks[0].MoveToNewPosition();
+            var list = new List<int>();
+            game.Players[0].Bricks[0].MoveToNewPosition(list);
             var newPos = game.Players[0].Bricks[0].Position;
 
             Assert.IsTrue(game.Players[0].Bricks[0].CanMove);

@@ -26,13 +26,13 @@ namespace Ludo.Helpers
         }
        
 
-        public static GameEngine.Game GetGameByCookie()
+        public static Game GetGameByCookie()
         {
             var id = GetGameId();
             var gid = GetGameGId();
             if(id != -1)
             {
-                return GameEngine.Helpers.GameHelper.GetGameById(id,gid);
+                return GameHelper.GetGameById(id,gid);
             }
 
             return null;
