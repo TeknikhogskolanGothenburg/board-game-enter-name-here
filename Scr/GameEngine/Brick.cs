@@ -19,11 +19,11 @@ namespace GameEngine
         public int PossibleNewPosition { get; set; }
         public int StepsTaken = 0;
 
-        
+
         public void CanMoveToPosition(int position, int diceResult, Brick brick = null)
         {
             //debug
-            if (Position >= Settings.PlayerHomePosition[0] /*&& (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue)*/ && (brick == null || brick.ColorId != ColorId))
+            if (Position >= Settings.PlayerHomePosition[ColorId] /*&& (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue)*/ && (brick == null || brick.ColorId != ColorId))
             {
                 CanMove = true;
                 PossibleNewPosition = position;
@@ -39,11 +39,20 @@ namespace GameEngine
             }
         }
 
-        private void Capture(Brick brick)
+        private void Capture(Brick brick, List<int> posList)
         {
             if (!brick.IsSafe)
             {
-                brick.Position = Settings.PlayerHomePosition[brick.ColorId];
+                int homePos;
+                if (posList.Count() != 0)
+                {
+                    homePos = posList.First();
+                }
+                else {
+                    homePos = Settings.PlayerHomePosition[brick.ColorId];
+                }
+                brick.Position = homePos;
+                brick.StepsTaken = 0;
                 brick.IsSafe = true;
             }
 
@@ -63,13 +72,13 @@ namespace GameEngine
 
             int result = 0;
             //debug
-            if (steps == 0 && Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId] + 3 /*&& (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue)*/)
+            if (Position >= Settings.PlayerHomePosition[ColorId] && Position <= Settings.PlayerHomePosition[ColorId] + 3 /*&& (diceResult == Settings.DiceMaxValue || diceResult == Settings.DiceMinValue)*/)
             {
                 result = Settings.PlayerStartPosition[ColorId];
             }
             else if (steps > 0 && steps <= Settings.MaxSteps)
             {
-                if (newPos < maxPos)
+                if (newPos <= maxPos)
                 {
                     result = newPos;
                 }
@@ -99,7 +108,7 @@ namespace GameEngine
 
         }
 
-        public bool MoveToNewPosition(Brick brick = null)
+        public bool MoveToNewPosition(List<int> posList, Brick brick = null)
         {
 
             if (brick == null)
@@ -114,7 +123,7 @@ namespace GameEngine
                 {
                     UpdateStepsTaken();
                     Position = PossibleNewPosition;
-                    if (Position > Settings.PlayerFinalRowStart[0])
+                    if (Position >= Settings.PlayerFinalRowStart[0] || Position == Settings.PlayerStartPosition[ColorId])
                     {
                         IsSafe = true;
                     }
@@ -126,7 +135,7 @@ namespace GameEngine
             }
             else
             {
-                Capture(brick);
+                Capture(brick, posList);
                 UpdateStepsTaken();
                 Position = PossibleNewPosition;
             }
@@ -138,12 +147,33 @@ namespace GameEngine
 
         private void UpdateStepsTaken(int? newValue = null)
         {
+            var min = Settings.MinPosition;
+            var max = Settings.MaxPosition;
+            var last = Settings.PlayerEndPosition[ColorId];
+            var minFinal = Settings.PlayerFinalRowStart[ColorId];
+            var maxFinal = Settings.PlayerFinalRowStart[ColorId] + 4;
+
             if (newValue == null)
             {
-                if (Position > 38 && PossibleNewPosition <= 1)
+                if (Position > (max - 6) && PossibleNewPosition < Position)
                 {
                     StepsTaken += Settings.MaxPosition - Position;
                     StepsTaken += PossibleNewPosition - Settings.MinPosition;
+                }
+                else if (Position <= Settings.PlayerEndPosition[ColorId] && PossibleNewPosition >= minFinal && PossibleNewPosition <= maxFinal)
+                {
+                    StepsTaken += Position - last;
+
+                    if (PossibleNewPosition == minFinal)
+                    {
+                        StepsTaken += 1;
+                    }
+                    else
+                    {
+                        StepsTaken += PossibleNewPosition - minFinal;
+                    }
+
+                    StepsTaken += PossibleNewPosition - Position;
                 }
                 else
                 {
@@ -152,7 +182,7 @@ namespace GameEngine
             }
             else
             {
-                StepsTaken = int.Parse(newValue.ToString());
+                StepsTaken += int.Parse(newValue.ToString());
             }
 
 

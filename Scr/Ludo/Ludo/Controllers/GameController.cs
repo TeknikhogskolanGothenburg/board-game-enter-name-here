@@ -36,9 +36,9 @@ namespace Ludo.Controllers
                 }
 
                 if (model.Game.HasWon() != null)
-                {
-                    model.StatusMessage = @"Player " + model.Game.CurrentPlayer.Name + "has won!";
+                {  
                     UpdateBrickList(model, true);
+                    model.StatusMessage = @"Player " + model.Game.CurrentPlayer.Name + "has won!";
                 }
                 else if (model.Game.IsFullGame() && model.Game.CurrentTurn == 0)
                 {

@@ -43,13 +43,13 @@ namespace GameEngine.Helpers
             return null;
         }
 
-        
+
 
         public static Player GetPlayerById(int id, Game game)
         {
             foreach (Player p in game.Players)
             {
-                if(id == p.ColorId)
+                if (id == p.ColorId)
                 {
                     return p;
                 }
@@ -57,6 +57,31 @@ namespace GameEngine.Helpers
             return null;
         }
 
+        public static List<int> GetFreeHomeIds(int playerId, Game game)
+        {
+            var list = new List<int>();
+            foreach (Player p in game.Players)
+            {
+                foreach ( Brick b in p.Bricks)
+                {
+                    if(b.Position >= Settings.PlayerHomePosition[playerId]) {
+                        list.Add(b.Position);
+                    }
+                }
+
+            }
+
+            for (int i = Settings.PlayerHomePosition[playerId]; i > Settings.PlayerHomePosition[playerId]+4;i++)
+            {
+                if(list.Contains(i))
+                {
+                    list.Remove(i);
+
+                }
+            }
+
+            return list;
+        }
         public static int GetNextGameId()
         {
             if (AllGames.Count() == 0)
