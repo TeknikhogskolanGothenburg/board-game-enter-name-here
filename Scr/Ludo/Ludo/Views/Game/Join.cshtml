@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_GameLayout.cshtml";
     ViewBag.Active5 = "active";
 }
-<br />
 <h2>Let's join a game!</h2>
 
 @using (Html.BeginForm("Join", "Game", FormMethod.Post))
@@ -33,6 +32,6 @@
         <label for="playerName-1">Email address</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="example@gmail.com" name="PlayerEmail">
     </div>
-    <input type="submit" class="btn btn-primary mb-2" value="Join" />
+    <input type="submit" class="btn btn-secondary mb-2" value="Join" />
 }
 
