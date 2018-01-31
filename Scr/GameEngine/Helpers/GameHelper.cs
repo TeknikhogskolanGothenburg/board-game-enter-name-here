@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace GameEngine.Helpers
 {
     public static class GameHelper
@@ -14,7 +15,7 @@ namespace GameEngine.Helpers
 
         public static bool GameExists(int gameId)
         {
-            if(AllGames.ContainsKey(gameId))
+            if (AllGames.ContainsKey(gameId))
             {
                 return true;
             }
@@ -30,6 +31,57 @@ namespace GameEngine.Helpers
             return null;
         }
 
+        public static Game GetGameById(int id, string gid)
+        {
+            if (GameExists(id) && Guid.TryParse(gid, out Guid GId))
+            {
+                if (AllGames[id].GId == GId)
+                {
+                    return AllGames[id];
+                }
+            }
+            return null;
+        }
+
+
+
+        public static Player GetPlayerById(int id, Game game)
+        {
+            foreach (Player p in game.Players)
+            {
+                if (id == p.ColorId)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public static List<int> GetFreeHomeIds(int playerId, Game game)
+        {
+            var list = new List<int>();
+            foreach (Player p in game.Players)
+            {
+                foreach ( Brick b in p.Bricks)
+                {
+                    if(b.Position >= Settings.PlayerHomePosition[playerId]) {
+                        list.Add(b.Position);
+                    }
+                }
+
+            }
+
+            for (int i = Settings.PlayerHomePosition[playerId]; i > Settings.PlayerHomePosition[playerId]+4;i++)
+            {
+                if(list.Contains(i))
+                {
+                    list.Remove(i);
+
+                }
+            }
+
+            return list;
+        }
         public static int GetNextGameId()
         {
             if (AllGames.Count() == 0)
@@ -38,7 +90,7 @@ namespace GameEngine.Helpers
             }
             else
             {
-                var newId = AllGames.Count() + 1;
+                var newId = AllGames.Keys.Last() + 1;
                 return newId;
             }
         }
@@ -47,7 +99,7 @@ namespace GameEngine.Helpers
         {
             int colorId;
             color = color.ToLower();
-            if(Settings.ColorId.Values.Contains(color))
+            if (Settings.ColorId.Values.Contains(color))
             {
                 colorId = Settings.ColorId.FirstOrDefault(x => x.Value == color).Key;
                 return colorId;
@@ -70,5 +122,7 @@ namespace GameEngine.Helpers
 
             return list;
         }
+
+
     }
 }

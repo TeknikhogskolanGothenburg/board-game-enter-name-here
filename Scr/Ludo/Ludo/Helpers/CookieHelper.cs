@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
+using GameEngine;
+using GameEngine.Helpers;
 
 namespace Ludo.Helpers
 {
@@ -24,12 +26,13 @@ namespace Ludo.Helpers
         }
        
 
-        public static GameEngine.Game GetGameByCookie()
+        public static Game GetGameByCookie()
         {
             var id = GetGameId();
+            var gid = GetGameGId();
             if(id != -1)
             {
-                return GameEngine.Helpers.GameHelper.GetGameById(id);
+                return GameHelper.GetGameById(id,gid);
             }
 
             return null;
@@ -46,6 +49,40 @@ namespace Ludo.Helpers
                 }
             }
             return -1;
+        }
+
+        public static string GetGameGId()
+        {
+            var myCookie = HttpContext.Current.Request.Cookies["Game"];
+            if (myCookie != null)
+            {
+                if (myCookie.Values.Get("GId") != null)
+                {
+                    var gid = myCookie.Values.Get("GId");
+                    return gid;
+                }
+            }
+            return null;
+        }
+
+        public static Player GetPlayer()
+        {
+            var myCookie = HttpContext.Current.Request.Cookies["Player"];
+            if (myCookie != null)
+            {
+                if (myCookie.Values.Get("Id") != null && int.TryParse(myCookie.Values.Get("Id"), out int id))
+                {
+                    var g = HttpContext.Current.Request.Cookies["Game"];
+                    if(g != null)
+                    {
+                        var game = GameHelper.AllGames[int.Parse(g.Values["Id"])];
+                        var p = GameHelper.GetPlayerById(id, game);
+                        return p;
+                    }
+                    
+                }
+            }
+            return null;
         }
 
         public static int GetPlayerColorId()

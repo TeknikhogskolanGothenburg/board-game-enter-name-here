@@ -14,9 +14,11 @@ namespace GameEngine
         //Main Game object, everything is controlled through this object.
 
         public int GameId { get; set; }
+        public Guid GId { get; set; }
         public string Name { get; set; }
         public List<Player> Players = new List<Player>();
-        public Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer { get; set; } = null;
+        public int CurrentTurn { get; set; } = 0;
 
         public int NoPlayers;
         public List<int> TakenColorIds
@@ -37,21 +39,23 @@ namespace GameEngine
         //}
 
 
-        
+
 
         public Game()
         {
             Dice = new Dice();
             GameId = GameHelper.GetNextGameId();
+            GId = Guid.NewGuid();
+            GameHelper.AllGames.Add(GameId, this);
         }
 
         public bool JoinExistingGame(string name, string email, int colorId)
         {
-           
+
 
             if (!this.GetTakenColorIds().Contains(colorId))
             {
-                
+
                 try
                 {
                     AddPlayer(name, email, colorId);
@@ -59,7 +63,7 @@ namespace GameEngine
                 catch (Exception)
                 {
                     //Ignore
-                   
+
                 }
                 return true;
 
@@ -67,16 +71,44 @@ namespace GameEngine
             return false;
         }
 
-        
+
         public void UpdateGameMove(int playerId, int brickId)
         {
-            
-            var brick = Players[playerId].Bricks[brickId];
+            var p = GameHelper.GetPlayerById(playerId, this);
+
+            var brick = p.Bricks[brickId];
             var newPos = brick.PossibleNewPosition;
             var occupiedBy = IsPositionOccupied(newPos);
 
-            brick.MoveToNewPosition(occupiedBy);
-            
+            var posList = new List<int>();
+            if (occupiedBy != null)
+            {
+                posList = GameHelper.GetFreeHomeIds(occupiedBy.ColorId, this);
+            }
+
+            brick.MoveToNewPosition(posList, occupiedBy);
+
+        }
+
+
+        public void StartGame()
+        {
+            //Reorder Players List according to ColorId ie. playerId
+            Players.OrderBy(p => p.ColorId);
+
+            var result = 0;
+            foreach(Player p in Players)
+            {
+                Dice.RollDice();
+                if (Dice.Result > result)
+                {
+                    CurrentPlayer = p;
+                }
+                result = Dice.Result;
+            }
+            CurrentTurn++;
+            UpdatePossibleMoves();
+
         }
 
 
@@ -84,8 +116,9 @@ namespace GameEngine
         {
             Dice.RollDice();
             CurrentPlayer = GetNextPlayer();
+            CurrentTurn++;
 
-            UpdatePossibleMoves();           
+            UpdatePossibleMoves();
         }
 
 
@@ -100,7 +133,8 @@ namespace GameEngine
                     Email = email,
                     ColorId = colorId
                 };
-
+                
+                p.GeneratePlayerBricks();
                 Players.Add(p);
             }
             //ordna Players[] efter colorId så turordningen blir rätt.
@@ -123,7 +157,18 @@ namespace GameEngine
             return takenIds;
         }
 
-      
+        public Player HasWon()
+        {
+            foreach(Player p in Players)
+            {
+                if (p.HasWon())
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+        
 
         private Brick IsPositionOccupied(int position)
         {
@@ -133,27 +178,28 @@ namespace GameEngine
 
             foreach (Player p in Players)
             {
-                foreach(Brick b in p.Bricks)
+                foreach (Brick b in p.Bricks)
                 {
                     if (b.Position == position)
                     {
                         return b;
                     }
-                }      
+                }
             }
 
             return null;
         }
 
         private Player GetNextPlayer()
-        {
+        {           
             var currentIndex = Players.IndexOf(CurrentPlayer);
             var lastIndex = Players.IndexOf(Players.Last());
 
             var nextPlayer = CurrentPlayer;
             var i = currentIndex;
 
-            while (nextPlayer == CurrentPlayer) {
+            while (nextPlayer == CurrentPlayer)
+            {
 
                 if (i == lastIndex)
                 {
@@ -170,7 +216,7 @@ namespace GameEngine
             }
 
             return nextPlayer;
-            
+
         }
 
         private void UpdatePossibleMoves()
@@ -179,8 +225,11 @@ namespace GameEngine
             {
                 var pos = b.GetNewPosition(Dice.Result);
                 var occupiedBy = IsPositionOccupied(pos);
-
-                b.CanMoveToPosition(pos, occupiedBy);
+                
+                b.CanMoveToPosition(pos, Dice.Result, occupiedBy);
+                // debug
+                var a = b.CanMove;
+                var x = b.PossibleNewPosition;
             }
         }
         //public List<int> GetAvailableColorIds()

@@ -9,7 +9,7 @@ namespace GameEngine
 {
     public class Dice
     {
-        private int _result;
+        private int _result = 0;
         public int Result
         {
             get

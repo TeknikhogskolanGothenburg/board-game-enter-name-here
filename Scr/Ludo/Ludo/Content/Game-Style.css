@@ -1,40 +1,267 @@
-﻿body {
-    color: white!important;
+body {
+  /*background-color: #423a4f;*/
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.custom-container {
+  background-color: #4f3d3d;
+  width: 770px;
+  height: 770px;
+  position: relative;
+  margin: auto;
+  top: 5px;
+  box-shadow: 0px 5px 20px -5px #000;
+}
+
+[class*="Block-"] {
+  background-color: #c5c5c5;
+  width: 55px;
+  height: 55px;
+  display: inline-flex;
+}
+
+.Blue-Corridor, .Yellow-Corridor, .Red-Corridor, .Green-Corridor {
+  position: inherit;
+  z-index: 10;
+  padding: 0;
+}
+
+.Blue-Corridor {
+  width: 175px;
+  height: 295px;
+  left: 299px;
+}
+
+.Yellow-Corridor {
+  width: 295px;
+  height: 175px;
+  left: 479px;
+  top: 1px;
+}
+
+.Red-Corridor {
+  width: 175px;
+  left: 300px;
+}
+
+.Green-Corridor {
+  width: 295px;
+  height: 175px;
+  bottom: 479px;
+  left: 0;
+}
+
+.Block-101, .Block-102, .Block-103, .Block-104, .Block-200 {
+  background-color: #135B7A;
+}
+
+.Block-105, .Block-106, .Block-107, .Block-108, .Block-201 {
+  background-color: #e0a839;
+}
+
+.Block-109, .Block-110, .Block-111, .Block-112, .Block-202 {
+  background-color: #C23817;
+}
+
+.Block-113, .Block-114, .Block-115, .Block-116, .Block-203 {
+  background-color: #118C43;
+}
+
+.Green-Home, .Blue-Home, .Red-Home, .Yellow-Home {
+  width: 290px;
+  height: 290px;
+  position: inherit;
+  z-index: 11;
+}
+
+.Green-Home {
+  bottom: 950px;
+  background-color: #118C43;
+}
+
+.Blue-Home {
+  bottom: 1240px;
+  left: 480px;
+  background-color: #135B7A;
+}
+
+.Yellow-Home {
+  left: 480px;
+  bottom: 1050px;
+  background-color: #e0a839;
+}
+
+.Red-Home {
+  bottom: 1340px;
+  background-color: #C23817;
+}
+
+.current-player {
+  padding-top: 35px;
+  font-size: 24px;
+}
+
+.Middle-Circle {
+  position: inherit;
+  background-color: #6f6f6f;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  bottom: 1800px;
+  left: 310px;
+  z-index: 12;
+  padding-top: 30px;
 }
 
 .marker-container {
-    width: 55px;
-    height: 55px;
-    /*border: 2px solid #000;*/
-    margin: auto;
-    position: static;
-    background-color: #D5D5D5;
-    z-index: 12
+  width: 55px;
+  height: 55px;
+  /*border: 2px solid #000;*/
+  margin: auto;
+  position: absolute;
+  background-color: #D5D5D5;
+  z-index: 12
+}
+
+.marker-container>a {
+  display: block;
 }
 
 .player-head, .player-body, .player-foot {
-    background-color: #118C43;
-    position: relative;
-    border: 0.5px solid #fff;
-    margin: auto;
+  background-color: #118C43;
+  position: relative;
+  border: 0.5px solid #fff;
+  margin: auto;
 }
 
 .player-head {
-    width: 22px;
-    height: 22px;
-    border-radius: 45%;
+  width: 22px;
+  height: 22px;
+  border-radius: 45%;
 }
 
 .player-body {
-    width: 20px;
-    height: 30px;
-    bottom: 2px;
-    border-radius: 10%;
+  width: 20px;
+  height: 30px;
+  bottom: 2px;
+  border-radius: 10%;
 }
 
 .player-foot {
-    width: 24px;
-    height: 10px;
-    bottom: 10px;
+  width: 24px;
+  height: 10px;
+  bottom: 10px;
 }
 
+.Blue-Base, .Green-Base, .Yellow-Base, .Red-Base {
+  width: 190px;
+  height: 190px;
+  background-color: #fff;
+  z-index: 20;
+  margin: auto;
+  position: inherit;
+  /*top: 20%;*/
+  opacity: 0.8
+}
+
+[class*="Block-60"], [class*="Block-61"] {
+  width: 90px;
+  height: 90px;
+  position: inherit;
+  left: 3px;
+  top: 2px
+}
+
+[class*="Block-60"] .marker-container, [class*="Block-61"] .marker-container {
+  width: 90px;
+  height: 90px;
+  padding-top: 20%;
+  background-color: #fff;
+  opacity: 0.8
+}
+
+.Blue-Player {
+  background-color: #135B7A
+}
+
+.Yellow-Player {
+  background-color: #e0a839
+}
+
+.Red-Player {
+  background-color: #C23817
+}
+
+.Green-Player {
+  background-color: #118C43
+}
+
+[class*="dice-"] {
+  width: 23px;
+  height: 23px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20%;
+  z-index: 10;
+}
+
+.dice-2 {
+  top: -23px;
+  left: 57px;
+}
+
+.dice-3 {
+  top: -18px;
+}
+
+.dice-4 {
+  left: 28px;
+  bottom: 41px;
+  z-index: 15;
+}
+
+.dice-5 {
+  top: -35px;
+}
+
+.dice-6 {
+  top: -87px;
+  left: 56px;
+}
+
+.dice-7 {
+  top: -82px;
+  left: 56px;
+}
+
+[class*="mark-"] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #000;
+  position: relative;
+  z-index: 15;
+  left: 6px;
+  top: 6px;
+}
+
+.dice-container {
+  width: 80px;
+  height: 80px;
+  /*border: 2px solid #4E1813;*/
+  margin: auto;
+  position: static;
+  background-color: #fff;
+  border-radius: 10%;
+}
+
+.player-name {
+  height: 50px;
+  padding: 12px 0 10px 10px
+}
+
+.d-result {
+  padding: 10px 0 10px 10px
+}

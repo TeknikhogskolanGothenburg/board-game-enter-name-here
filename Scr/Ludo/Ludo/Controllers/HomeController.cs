@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using GameEngine;
 using Ludo.Models;
+using Ludo.Helpers;
 
 namespace Ludo.Controllers
 {
@@ -13,6 +14,16 @@ namespace Ludo.Controllers
         // GET: Home
         public ActionResult Index()
         {
+
+            var game = CookieHelper.GetGameByCookie();
+
+            if(game != null)
+            {
+                
+                return RedirectToRoute("Game", new { id = game.GameId });
+                
+            }
+
             return View();
         }
 

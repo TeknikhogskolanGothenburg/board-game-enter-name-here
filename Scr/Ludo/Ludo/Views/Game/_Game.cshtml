@@ -6,37 +6,37 @@
     switch (Model.PlayerId)
     {
         case 0:
-            color = @".blue";
+            color = @"Blue";
             break;
         case 1:
-            color = @".yellow";
+            color = @"Yellow";
             break;
         case 2:
-            color = @".red";
+            color = @"Red";
             break;
         case 3:
-            color = @".green";
+            color = @"Green";
             break;
 
     }
 
     if (Model.BrickId >= 0)
     {
-        <div class="marker-container @color">
+        <div class="marker-container">
             @{
                 if (Model.Active)
                 {
                     <a href="@Url.Action("Move", new { playerId = Model.PlayerId, brickId = Model.BrickId })">
-                        <div class="player-head"></div>
-                        <div class="player-body"></div>
-                        <div class="player-foot"></div>
+                        <div class="player-head @color-Player"></div>
+                        <div class="player-body @color-Player"></div>
+                        <div class="player-foot @color-Player"></div>
                     </a>
                 }
                 else
                 {
-                    <div class="player-head"></div>
-                    <div class="player-body"></div>
-                    <div class="player-foot"></div>
+                    <div class="player-head @color-Player"></div>
+                    <div class="player-body @color-Player"></div>
+                    <div class="player-foot @color-Player"></div>
                 }
             }
         </div>
