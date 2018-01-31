@@ -3,8 +3,9 @@
 @{
     ViewBag.Title = "Join";
     Layout = "~/Views/Shared/_GameLayout.cshtml";
+    ViewBag.Active5 = "active";
 }
-
+<br />
 <h2>Let's join a game!</h2>
 
 @using (Html.BeginForm("Join", "Game", FormMethod.Post))
